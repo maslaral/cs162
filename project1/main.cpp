@@ -6,7 +6,7 @@
    that calls functions in the Menu class to collect user input,
    passes that user input into the Board and Ant class, and
    ultimately prints the board the number of times specified
-   by the user. 
+   by the users.
 *************************************************************/
 #include <iostream>
 #include "Menu.hpp"
