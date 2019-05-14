@@ -10,4 +10,5 @@
 
 void count_letters(std::ifstream&, int*);
 
+
 #endif
