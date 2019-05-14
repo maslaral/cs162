@@ -4,7 +4,7 @@
 ** Date: May 02 2019
 ** Description: Program that calls one of three functions based 
    on user input, including:
-   1. reverse a string - takes a string as an argument and returns
+   1. reverse a string - takes string as an argument and returns
       the string in reverse order
    2. sum elements of an array - gets the user input for the size
       of the array, and then prompts the user for numbers to
