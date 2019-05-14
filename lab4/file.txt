@@ -1,0 +1,24 @@
+1
+John Rodriguez
+26
+1.64312
+2
+Jason Strassemeir
+78
+3.79995
+1
+Alex Lamers
+19
+1.49769
+2
+Jackie Fitzgerald
+60
+3.13467
+1
+Alex
+22
+1.67259
+2
+John
+63
+0.0909812
