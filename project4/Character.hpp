@@ -23,6 +23,7 @@ class Character {
     int num_sides_attack;
     int num_die_defend;
     int num_sides_defend;
+    Character* next;
   public:
     // game play functions
     virtual int attack() = 0;
