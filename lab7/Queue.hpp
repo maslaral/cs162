@@ -1,0 +1,21 @@
+#ifndef QUEUE_HPP
+#define QUEUE_HPP
+
+class Queue {
+  private:
+    QueueNode* head;
+    QueueNode* rear;
+  public:
+    // constructor
+    Queue();
+    // destructor
+    ~Queue();
+
+    bool isEmpty();
+    void addBack(int);
+    int getFront();
+    void removeFront();
+    void printQueue();
+}
+
+#endif
