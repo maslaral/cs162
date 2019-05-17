@@ -1,3 +1,5 @@
+#include "QueueNode.hpp"
+
 #ifndef QUEUE_HPP
 #define QUEUE_HPP
 
@@ -11,11 +13,11 @@ class Queue {
     // destructor
     ~Queue();
 
-    bool isEmpty();
+    bool isEmpty() const;
     void addBack(int);
     int getFront();
     void removeFront();
     void printQueue();
-}
+};
 
 #endif

@@ -30,14 +30,27 @@ QueueNode::QueueNode(int val){
 ** Description: Getter functions to return the values related
    to the node's position and value.
 *************************************************************/
-int QueueNode::get_next(){
+QueueNode* QueueNode::get_next(){
   return next;
 }
 
-int QueueNode::get_prev(){
+QueueNode* QueueNode::get_prev(){
   return prev;
 }
 
 int QueueNode::get_val(){
   return val;
+}
+
+
+/*************************************************************
+** Description: Setter functions to set the next and prev
+   nodes.
+*************************************************************/
+void QueueNode::set_next(QueueNode* next){
+  this->next = next;
+}
+
+void QueueNode::set_prev(QueueNode* prev){
+  this->prev = prev;
 }

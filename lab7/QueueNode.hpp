@@ -14,9 +14,12 @@ class QueueNode {
     ~QueueNode();
 
     // getter functions
-    int get_next();
-    int get_prev();
+    QueueNode* get_next();
+    QueueNode* get_prev();
     int get_val();
+    // setter functions
+    void set_next(QueueNode*);
+    void set_prev(QueueNode*);
 };
 
 #endif
