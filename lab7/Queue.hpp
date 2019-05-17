@@ -6,7 +6,6 @@
 class Queue {
   private:
     QueueNode* head;
-    QueueNode* rear;
   public:
     // constructor
     Queue();
@@ -15,9 +14,12 @@ class Queue {
 
     bool isEmpty() const;
     void addBack(int);
-    void getFront();
+    int getFront();
     void removeFront();
     void printQueue();
+
+    // queue exception
+    class Empty {};
 };
 
 #endif

@@ -31,7 +31,18 @@ int main(){
       }
       break;
       case 2: {
-        main_queue.getFront();
+        try {
+          int front = main_queue.getFront();
+
+          std::cout << std::endl;
+          std::cout << front << std::endl;
+          std::cout << std::endl;
+        }
+        catch (Queue::Empty){
+          std::cout << std::endl;
+          std::cout << "Queue is empty." << std::endl;
+          std::cout << std::endl;
+        }
       }
       break;
       case 3: {
@@ -39,7 +50,14 @@ int main(){
       }
       break;
       case 4: {
-        main_queue.printQueue();
+        try {
+          main_queue.printQueue();
+        }
+        catch (Queue::Empty){
+          std::cout << std::endl;
+          std::cout << "Queue is empty." << std::endl;
+          std::cout << std::endl;
+        }
       }
       break;
     }

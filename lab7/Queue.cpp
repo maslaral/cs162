@@ -1,14 +1,14 @@
 #include "Queue.hpp"
 #include <iostream>
 
-/************************************************************* ** Description: Default constructor - sets the head and rear 
- to nullptr to indicate an empty queue.
+
+/*************************************************************
+ ** Description: Constructor - sets head to nullptr to indicate
+ an empty queue
  *************************************************************/
 Queue::Queue(){
   head = nullptr;
-  rear = nullptr;
 }
-
 /*************************************************************
  ** Description: Destructor - deletes each node in the queue
  and sets them to nullptr.
@@ -44,12 +44,27 @@ bool Queue::isEmpty() const {
 void Queue::addBack(int num){
   if (isEmpty()){
     head = new QueueNode(num);
-    rear = head;
   }
   else {
+    // create the new node
     QueueNode* new_node = new QueueNode(num);
-    rear->set_next(new_node);
-    rear = rear->get_next();
+
+    if (head->get_next() == nullptr){
+      head->set_next(new_node);
+    }
+    else {
+      // create a temp to traverse the list
+      QueueNode* next_node = head->get_next();
+
+      // run until the next is a nullptr
+      while (next_node->get_next() != nullptr){
+        next_node = next_node->get_next();
+      }
+      // set the next_node to the new node and the new node prev to the
+      // next_node
+      next_node->set_next(new_node);
+      new_node->set_prev(next_node);
+    }
   }
 }
 
@@ -57,16 +72,12 @@ void Queue::addBack(int num){
  ** Description: Returns the value stored in the head node in
  the queue.
  *************************************************************/
-void Queue::getFront(){
+int Queue::getFront(){
   if (isEmpty()){
-    std::cout << std::endl;
-    std::cout << "Queue is empty." << std::endl;
-    std::cout << std::endl;
+    throw Queue::Empty();
   }
   else {
-    std::cout << std::endl;
-    std::cout << head->get_val() << std::endl;
-    std::cout << std::endl;
+    return head->get_val();
   }
 }
 
@@ -84,9 +95,15 @@ void Queue::removeFront(){
     return;
   }
   else {
-    QueueNode* temp = head;
-    head = head->get_next();
-    delete temp;
+    // if the head is the last in the queue
+    if (head->get_next() == nullptr){
+      head = nullptr;
+    }
+    else {
+      QueueNode* temp = head;
+      head = head->get_next();
+      delete temp;
+    }
   }
 }
 
@@ -96,30 +113,26 @@ void Queue::removeFront(){
  *************************************************************/
 void Queue::printQueue(){
   if (isEmpty()){
-    std::cout << std::endl;
-    std::cout << "Queue is empty." << std::endl;
-    std::cout << std::endl;
+    throw Queue::Empty();
   }
   else {
     // print out the value of head
     std::cout << std::endl;
     std::cout << head->get_val() << std::endl;
-    
+
     // check if there's a value after head
-    if (head->get_next() == nullptr){
-      return;
-    }
+    if (head->get_next() != nullptr){
 
-    // set var next_node to the node after head
-    QueueNode* next_node = head->get_next();
+      // set var next_node to the node after head
+      QueueNode* next_node = head->get_next();
 
-    // until the next node equals rear, print out the value
-    // and move up one in the queue
-    while (next_node != rear){
-      std::cout << next_node->get_val() << std::endl;
-      next_node = next_node->get_next();
+      // until the next node is a nullptr, print out the value
+      // and move up one in the queue
+      while (next_node != nullptr){
+        std::cout << next_node->get_val() << std::endl;
+        next_node = next_node->get_next();
+      }
     }
-    std::cout << rear->get_val() << std::endl;
     std::cout << std::endl;
   }
 }
