@@ -96,6 +96,12 @@ void Queue::printQueue(){
   else {
     // print out the value of head
     std::cout << head->get_val() << std::endl;
+    
+    // check if there's a value after head
+    if (head->get_next() == nullptr){
+      return;
+    }
+
     // set var next_node to the node after head
     QueueNode* next_node = head->get_next();
 
