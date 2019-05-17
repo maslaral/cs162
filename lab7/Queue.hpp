@@ -15,7 +15,7 @@ class Queue {
 
     bool isEmpty() const;
     void addBack(int);
-    int getFront();
+    void getFront();
     void removeFront();
     void printQueue();
 };

@@ -1,8 +1,7 @@
 #include "Queue.hpp"
 #include <iostream>
 
-/*************************************************************
- ** Description: Default constructor - sets the head and rear 
+/************************************************************* ** Description: Default constructor - sets the head and rear 
  to nullptr to indicate an empty queue.
  *************************************************************/
 Queue::Queue(){
@@ -58,13 +57,16 @@ void Queue::addBack(int num){
  ** Description: Returns the value stored in the head node in
  the queue.
  *************************************************************/
-int Queue::getFront(){
+void Queue::getFront(){
   if (isEmpty()){
+    std::cout << std::endl;
     std::cout << "Queue is empty." << std::endl;
-    return 0;
+    std::cout << std::endl;
   }
   else {
-    return head->get_val();
+    std::cout << std::endl;
+    std::cout << head->get_val() << std::endl;
+    std::cout << std::endl;
   }
 }
 
@@ -76,6 +78,9 @@ int Queue::getFront(){
  *************************************************************/
 void Queue::removeFront(){
   if (isEmpty()){
+    std::cout << std::endl;
+    std::cout << "Queue is empty." << std::endl;
+    std::cout << std::endl;
     return;
   }
   else {
@@ -91,10 +96,13 @@ void Queue::removeFront(){
  *************************************************************/
 void Queue::printQueue(){
   if (isEmpty()){
+    std::cout << std::endl;
     std::cout << "Queue is empty." << std::endl;
+    std::cout << std::endl;
   }
   else {
     // print out the value of head
+    std::cout << std::endl;
     std::cout << head->get_val() << std::endl;
     
     // check if there's a value after head
@@ -112,5 +120,6 @@ void Queue::printQueue(){
       next_node = next_node->get_next();
     }
     std::cout << rear->get_val() << std::endl;
+    std::cout << std::endl;
   }
 }
