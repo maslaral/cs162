@@ -32,6 +32,7 @@ int main(){
       break;
       case 2: {
         try {
+          // defining a var to hold the front value before output
           int front = main_queue.getFront();
 
           std::cout << std::endl;
@@ -39,14 +40,17 @@ int main(){
           std::cout << std::endl;
         }
         catch (Queue::Empty){
-          std::cout << std::endl;
-          std::cout << "Queue is empty." << std::endl;
-          std::cout << std::endl;
+          main_queue.outputEmpty(); // outputs the queue is empty
         }
       }
       break;
       case 3: {
-        main_queue.removeFront();
+        try {
+          main_queue.removeFront();
+        }
+        catch (Queue::Empty){
+          main_queue.outputEmpty();
+        }
       }
       break;
       case 4: {
@@ -54,9 +58,7 @@ int main(){
           main_queue.printQueue();
         }
         catch (Queue::Empty){
-          std::cout << std::endl;
-          std::cout << "Queue is empty." << std::endl;
-          std::cout << std::endl;
+          main_queue.outputEmpty();
         }
       }
       break;

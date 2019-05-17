@@ -17,6 +17,7 @@ class Queue {
     int getFront();
     void removeFront();
     void printQueue();
+    void outputEmpty();
 
     // queue exception
     class Empty {};

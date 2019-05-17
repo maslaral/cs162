@@ -1,7 +1,6 @@
 #include "Queue.hpp"
 #include <iostream>
 
-
 /*************************************************************
  ** Description: Constructor - sets head to nullptr to indicate
  an empty queue
@@ -89,10 +88,7 @@ int Queue::getFront(){
  *************************************************************/
 void Queue::removeFront(){
   if (isEmpty()){
-    std::cout << std::endl;
-    std::cout << "Queue is empty." << std::endl;
-    std::cout << std::endl;
-    return;
+    throw Queue::Empty();
   }
   else {
     // if the head is the last in the queue
@@ -135,4 +131,10 @@ void Queue::printQueue(){
     }
     std::cout << std::endl;
   }
+}
+
+void Queue::outputEmpty(){
+  std::cout << std::endl;
+  std::cout << "Queue is empty." << std::endl;
+  std::cout << std::endl;
 }
