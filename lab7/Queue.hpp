@@ -8,18 +8,21 @@
    from the queue, and to print the values of each node in the
    queue. The Queue is a circular queue, meaning that the head
    previous node is the tail of the queue, and the tail of the
-   queue next node is the head. 
+   queue next node is the head. The variables of the Queue 
+   class include a structure which represents a node and a
+   pointer to a head.
 *************************************************************/
 #ifndef QUEUE_HPP
 #define QUEUE_HPP
 
+struct QueueNode {
+  QueueNode* next;
+  QueueNode* prev; 
+  int val;
+};
+
 class Queue {
   private:
-    struct QueueNode {
-      QueueNode* next;
-      QueueNode* prev; 
-      int val;
-    };
     QueueNode* head;
 
   public:
