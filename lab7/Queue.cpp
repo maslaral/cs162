@@ -19,13 +19,13 @@ Queue::~Queue(){
 
   QueueNode* garbage = head;
 
-  while (garbage->get_next() != nullptr){
+  while (garbage->get_next() != head){
     head = head->get_next();
-    garbage->get_prev()->set_next(nullptr); 
+    garbage->get_prev()->set_next(head);
+    head->set_prev(garbage->get_prev());
     delete garbage;
     garbage = head;
   }
-  delete garbage;
 }
 
 /*************************************************************

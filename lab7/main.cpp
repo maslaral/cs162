@@ -32,11 +32,8 @@ int main(){
       break;
       case 2: {
         try {
-          // defining a var to hold the front value before output
-          int front = main_queue.getFront();
-
           std::cout << std::endl;
-          std::cout << front << std::endl;
+          std::cout << main_queue.getFront() << std::endl;
           std::cout << std::endl;
         }
         catch (Queue::Empty){
