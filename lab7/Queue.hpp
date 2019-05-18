@@ -17,7 +17,13 @@
 
 class Queue {
   private:
+    struct QueueNode {
+      QueueNode* next;
+      QueueNode* prev; 
+      int val;
+    };
     QueueNode* head;
+
   public:
     // constructor
     Queue();

@@ -6,11 +6,11 @@ CXXFLAGS += -Wall
 CXXFLAGS += -pedantic-errors
 CXXFLAGS += -g
 
-SRCS = main.cpp Queue.cpp QueueNode.cpp Menu.cpp
+SRCS = main.cpp Queue.cpp Menu.cpp
 
-HEADERS = Queue.hpp QueueNode.hpp Menu.hpp
+HEADERS = Queue.hpp Menu.hpp
 
-OBJS = main.o Queue.o QueueNode.o Menu.o
+OBJS = main.o Queue.o Menu.o
 
 main: ${OBJS}
 	${CXX} ${CXXFLAGS} ${OBJS} -o main

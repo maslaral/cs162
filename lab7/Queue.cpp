@@ -20,6 +20,7 @@
 Queue::Queue(){
   head = nullptr;
 }
+
 /*************************************************************
  ** Description: Destructor - deletes each node in the queue by
     traversing the queue until just the head remains
@@ -31,10 +32,10 @@ Queue::~Queue(){
 
   QueueNode* garbage = head; 
 
-  while (garbage->get_next() != head){
-    head = head->get_next();             
-    garbage->get_prev()->set_next(head); // last node next to head
-    head->set_prev(garbage->get_prev()); // head prev to last node
+  while (garbage->next != head){
+    head = head->prev;
+    garbage->prev->next = head;    
+    head->prev = garbage->prev; // head prev to last node
     delete garbage;
     garbage = head;
   }
@@ -75,26 +76,28 @@ void Queue::outputEmpty(){
 void Queue::addBack(int num){
   if (isEmpty()){
     // create new head node - prev and next both point to head
-    head = new QueueNode(num);
-    head->set_next(head);
-    head->set_prev(head);
+    head = new QueueNode;
+    head->val = num;
+    head->next = head;
+    head->prev = head;
   }
   else {
     // initialize the new node and the next node
-    QueueNode* new_node = new QueueNode(num);
-    QueueNode* next_node = head->get_next();
+    QueueNode* new_node = new QueueNode;
+    new_node->val = num;
+    QueueNode* next_node = head->next;
 
     // traverse list until end of list 
-    while (next_node->get_next() != head){
-      next_node = next_node->get_next();
+    while (next_node->next != head){
+      next_node = next_node->next;
     }
 
     // set the new node to the last and link it back to the 
     // start of the list
-    next_node->set_next(new_node);
-    new_node->set_prev(next_node);
-    new_node->set_next(head);
-    head->set_prev(new_node);
+    next_node->next = new_node;
+    new_node->prev = next_node;
+    new_node->next = head;
+    head->prev = new_node;
   }
 }
 
@@ -107,7 +110,7 @@ int Queue::getFront(){
     throw Queue::Empty();
   }
   else {
-    return head->get_val();
+    return head->val;
   }
 }
 
@@ -123,16 +126,16 @@ void Queue::removeFront(){
   }
   else {
     // check - head last? 
-    if (head->get_next() == head){
+    if (head->next == head){
       head = nullptr;
     }
     else {
       QueueNode* temp = head;
 
       // link the new front back to the last element
-      head = head->get_next();
-      head->set_prev(temp->get_prev());
-      head->get_prev()->set_next(head);
+      head = head->next;
+      head->prev = temp->prev;
+      head->prev->next = head;
 
       delete temp;
     }
@@ -151,16 +154,16 @@ void Queue::printQueue(){
   else {
     // print out the value of head
     std::cout << std::endl;
-    std::cout << head->get_val() << std::endl;
+    std::cout << head->val << std::endl;
 
     // check if there's a value after head
-    if (head->get_next() != head){
+    if (head->next != head){
       // set var next_node to the node after head       
-      QueueNode* next_node = head->get_next();
+      QueueNode* next_node = head->next;
       // print until next_node equals head
       while (next_node != head){
-        std::cout << next_node->get_val() << std::endl;
-        next_node = next_node->get_next();
+        std::cout << next_node->val << std::endl;
+        next_node = next_node->next;
       }
     }
     std::cout << std::endl;
