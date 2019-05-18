@@ -25,6 +25,7 @@ Queue::~Queue(){
     delete garbage;
     garbage = head;
   }
+  delete garbage;
 }
 
 /*************************************************************
