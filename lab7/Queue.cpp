@@ -14,9 +14,9 @@ Queue::Queue(){
  *************************************************************/
 Queue::~Queue(){
   QueueNode* garbage = head;
-  while (garbage != nullptr){
+  while (garbage->get_next() != nullptr){
     head = head->get_next();
-    garbage->set_next(nullptr);
+    garbage->get_prev()->set_next(nullptr); 
     delete garbage;
     garbage = head;
   }
@@ -42,28 +42,27 @@ bool Queue::isEmpty() const {
  *************************************************************/
 void Queue::addBack(int num){
   if (isEmpty()){
+    // create new head node - prev and next both point to head
     head = new QueueNode(num);
+    head->set_next(head);
+    head->set_prev(head);
   }
   else {
-    // create the new node
+    // initialize the new node and the next node
     QueueNode* new_node = new QueueNode(num);
+    QueueNode* next_node = head->get_next();
 
-    if (head->get_next() == nullptr){
-      head->set_next(new_node);
+    // traverse list until end of list 
+    while (next_node->get_next() != head){
+      next_node = next_node->get_next();
     }
-    else {
-      // create a temp to traverse the list
-      QueueNode* next_node = head->get_next();
 
-      // run until the next is a nullptr
-      while (next_node->get_next() != nullptr){
-        next_node = next_node->get_next();
-      }
-      // set the next_node to the new node and the new node prev to the
-      // next_node
-      next_node->set_next(new_node);
-      new_node->set_prev(next_node);
-    }
+    // set the new node to the last and link it back to the 
+    // start of the list
+    next_node->set_next(new_node);
+    new_node->set_prev(next_node);
+    new_node->set_next(head);
+    head->set_prev(new_node);
   }
 }
 
@@ -91,13 +90,18 @@ void Queue::removeFront(){
     throw Queue::Empty();
   }
   else {
-    // if the head is the last in the queue
-    if (head->get_next() == nullptr){
+    // check - head last? 
+    if (head->get_next() == head){
       head = nullptr;
     }
     else {
       QueueNode* temp = head;
+
+      // link the new front back to the last element
       head = head->get_next();
+      head->set_prev(temp->get_prev());
+      head->get_prev()->set_next(head);
+
       delete temp;
     }
   }
@@ -118,13 +122,11 @@ void Queue::printQueue(){
 
     // check if there's a value after head
     if (head->get_next() != nullptr){
-
-      // set var next_node to the node after head
+      // set var next_node to the node after head       
       QueueNode* next_node = head->get_next();
-
       // until the next node is a nullptr, print out the value
       // and move up one in the queue
-      while (next_node != nullptr){
+      while (next_node != head){
         std::cout << next_node->get_val() << std::endl;
         next_node = next_node->get_next();
       }
@@ -133,6 +135,9 @@ void Queue::printQueue(){
   }
 }
 
+/*************************************************************
+ ** Description: Function that outputs that the queue is empty.
+ *************************************************************/
 void Queue::outputEmpty(){
   std::cout << std::endl;
   std::cout << "Queue is empty." << std::endl;
