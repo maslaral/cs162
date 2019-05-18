@@ -13,6 +13,10 @@ Queue::Queue(){
  and sets them to nullptr.
  *************************************************************/
 Queue::~Queue(){
+  if (head == nullptr){
+    return;
+  }
+
   QueueNode* garbage = head;
   while (garbage->get_next() != nullptr){
     head = head->get_next();
