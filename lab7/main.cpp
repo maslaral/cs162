@@ -8,7 +8,6 @@
    user input. 
 *************************************************************/
 #include "Queue.hpp"
-#include "QueueNode.hpp"
 #include "Menu.hpp"
 
 #include <iostream>

@@ -33,7 +33,7 @@ Queue::~Queue(){
   QueueNode* garbage = head; 
 
   while (garbage->next != head){
-    head = head->prev;
+    head = head->next;
     garbage->prev->next = head;    
     head->prev = garbage->prev; // head prev to last node
     delete garbage;

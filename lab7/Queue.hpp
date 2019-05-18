@@ -10,8 +10,6 @@
    previous node is the tail of the queue, and the tail of the
    queue next node is the head. 
 *************************************************************/
-#include "QueueNode.hpp"
-
 #ifndef QUEUE_HPP
 #define QUEUE_HPP
 
