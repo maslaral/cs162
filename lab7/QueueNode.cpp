@@ -5,6 +5,7 @@
    nullptr.
 *************************************************************/
 QueueNode::QueueNode(){
+  val = 0;
   next = nullptr;
   prev = nullptr;
 }
