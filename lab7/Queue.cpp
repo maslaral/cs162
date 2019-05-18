@@ -1,39 +1,52 @@
+/*************************************************************
+** Program name: Lab 7
+** Author: Alex Maslar
+** Date: May 18 2019
+** Description: Function implementation for the Queue class. 
+   Includes functions to add a node to the back of the queue,
+   to get the front value in the queue, remove the front node
+   from the queue, and to print the values of each node in the
+   queue. The Queue is a circular queue, meaning that the head
+   previous node is the tail of the queue, and the tail of the
+   queue next node is the head. 
+*************************************************************/
 #include "Queue.hpp"
 #include <iostream>
 
 /*************************************************************
  ** Description: Constructor - sets head to nullptr to indicate
- an empty queue
- *************************************************************/
+    an empty queue
+*************************************************************/
 Queue::Queue(){
   head = nullptr;
 }
 /*************************************************************
- ** Description: Destructor - deletes each node in the queue
- and sets them to nullptr.
- *************************************************************/
+ ** Description: Destructor - deletes each node in the queue by
+    traversing the queue until just the head remains
+*************************************************************/
 Queue::~Queue(){
   if (head == nullptr){
     return;
   }
 
-  QueueNode* garbage = head;
+  QueueNode* garbage = head; 
 
   while (garbage->get_next() != head){
-    head = head->get_next();
-    garbage->get_prev()->set_next(head);
-    head->set_prev(garbage->get_prev());
+    head = head->get_next();             
+    garbage->get_prev()->set_next(head); // last node next to head
+    head->set_prev(garbage->get_prev()); // head prev to last node
     delete garbage;
     garbage = head;
   }
-  delete garbage;
+  delete garbage; // delete head
 }
 
 /*************************************************************
  ** Description: Function checks if the queue contains no
- elements and returns a boolean value. Used to avoid
- underflow by throwing an exception when this is the case.
- *************************************************************/
+    elements and returns a boolean value. Used to avoid
+    underflow by throwing an exception when this is the case -
+    exception thrown in other functions.
+*************************************************************/
 bool Queue::isEmpty() const {
   if (head == nullptr){
     return true;
@@ -44,9 +57,21 @@ bool Queue::isEmpty() const {
 }
 
 /*************************************************************
+ ** Description: Function that outputs that the queue is empty.
+    Created to just reduce redundancy.
+*************************************************************/
+void Queue::outputEmpty(){
+  std::cout << std::endl;
+  std::cout << "Queue is empty." << std::endl;
+  std::cout << std::endl;
+}
+
+/*************************************************************
  ** Description: Function adds a node to the end of the queue
- with the value entered by the user.
- *************************************************************/
+    with the value entered by the user. If it's the first node
+    in the queue, it creates it as the head of the queue and
+    sets it to point at itself.
+*************************************************************/
 void Queue::addBack(int num){
   if (isEmpty()){
     // create new head node - prev and next both point to head
@@ -75,8 +100,8 @@ void Queue::addBack(int num){
 
 /*************************************************************
  ** Description: Returns the value stored in the head node in
- the queue.
- *************************************************************/
+    the queue. If the queue is empty, throws an exception.
+*************************************************************/
 int Queue::getFront(){
   if (isEmpty()){
     throw Queue::Empty();
@@ -88,10 +113,10 @@ int Queue::getFront(){
 
 /*************************************************************
  ** Description: Function removes the first node in the queue
- by assigning the head to temp, reassigning the head node
- to the next node in the queue, and then deleting the temp
- variable.
- *************************************************************/
+    by assigning the head to temp, reassigning the head node
+    to the next node in the queue, and then deleting the temp
+    variable.
+*************************************************************/
 void Queue::removeFront(){
   if (isEmpty()){
     throw Queue::Empty();
@@ -116,8 +141,9 @@ void Queue::removeFront(){
 
 /*************************************************************
  ** Description: Function prints the value of each node in the
- queue.
- *************************************************************/
+    queue. It prints each node by traversing the list until
+    it gets to the node that points to the head of the queue.
+*************************************************************/
 void Queue::printQueue(){
   if (isEmpty()){
     throw Queue::Empty();
@@ -128,11 +154,10 @@ void Queue::printQueue(){
     std::cout << head->get_val() << std::endl;
 
     // check if there's a value after head
-    if (head->get_next() != nullptr){
+    if (head->get_next() != head){
       // set var next_node to the node after head       
       QueueNode* next_node = head->get_next();
-      // until the next node is a nullptr, print out the value
-      // and move up one in the queue
+      // print until next_node equals head
       while (next_node != head){
         std::cout << next_node->get_val() << std::endl;
         next_node = next_node->get_next();
@@ -140,13 +165,4 @@ void Queue::printQueue(){
     }
     std::cout << std::endl;
   }
-}
-
-/*************************************************************
- ** Description: Function that outputs that the queue is empty.
- *************************************************************/
-void Queue::outputEmpty(){
-  std::cout << std::endl;
-  std::cout << "Queue is empty." << std::endl;
-  std::cout << std::endl;
 }

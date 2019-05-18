@@ -1,7 +1,7 @@
 /*************************************************************
-** Program name: Lab 6
+** Program name: Lab 7
 ** Author: Alex Maslar
-** Date: May 12 2019
+** Date: May 18 2019
 ** Description: Header file for the Menu class. The Menu class
    has variables specific to the user menu, including the 
    prompt presented to the user, the options, min and max

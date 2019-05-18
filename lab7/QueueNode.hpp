@@ -1,3 +1,12 @@
+/*************************************************************
+** Program name: Lab 7
+** Author: Alex Maslar
+** Date: May 18 2019
+** Description: Function header file for the QueueNode
+   class. Includes functions to get the next, previous, and
+   value of each QueueNode object. In addition, functions to
+   set the next and previous nodes.
+*************************************************************/
 #ifndef QUEUENODE_HPP
 #define QUEUENODE_HPP
 
