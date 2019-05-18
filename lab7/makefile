@@ -1,4 +1,4 @@
-# Makefile for lab 6 
+# Makefile for lab 7
 
 CXX = g++
 CXXFLAGS = -std=c++0x

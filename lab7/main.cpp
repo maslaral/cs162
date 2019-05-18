@@ -1,5 +1,5 @@
 /*************************************************************
-** Program name:
+** Program name: Lab 7
 ** Author: Alex Maslar
 ** Date: May 18 2019
 ** Description: Main function which initializes the menus 
