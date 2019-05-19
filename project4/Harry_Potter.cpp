@@ -81,27 +81,6 @@ void Harry_Potter::special_ability(){
     std::cout << std::endl;
   } 
 }
-/*************************************************************
-** Description: Alive function checks whether or not the
-   player is alive. Returns a boolean value true/false to the
-   Game class to determine when to end the game.
-*************************************************************/
-bool Harry_Potter::alive(){
-  if (strength > 0){
-    return true;
-  }
-  else {
-    return false;
-  }
-}
-
-/*************************************************************
-** Description: Get armor function returns the armor of Harry
-   Potter.
-*************************************************************/
-int Harry_Potter::get_armor(){
-  return armor;
-}
 
 /*************************************************************
 ** Description: Get type function returns the type - used only
@@ -109,12 +88,4 @@ int Harry_Potter::get_armor(){
 *************************************************************/
 std::string Harry_Potter::get_type(){
   return "Harry Potter";
-}
-
-/*************************************************************
-** Description: Get strength function returns the strength of
-   Harry Potter.
-*************************************************************/
-int Harry_Potter::get_strength(){
-  return strength;
 }

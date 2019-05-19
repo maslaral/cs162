@@ -25,11 +25,7 @@ Game::~Game(){
 ** Description: Create players and coordinate game play - also
    output result of match
 *************************************************************/
-void Game::play(character_type p_one, character_type p_two){
-  // call create player function
-  Character* player_one = create_player(p_one);
-  Character* player_two = create_player(p_two);
-
+void Game::play(Character* player_one, Character* player_two){
   // play until one player is no longer alive
   while (player_one->alive() && player_two->alive()){
     play_round(player_one, player_two);
@@ -43,54 +39,70 @@ void Game::play(character_type p_one, character_type p_two){
     std::cout << "---------------------------------------------" << std::endl;
     std::cout << "Player 1 " << player_one->get_type() << " wins!" << std::endl;
     std::cout << "---------------------------------------------" << std::endl;
-    winners.add_winner(player_one);
+    team_one_winners.add_winner(player_one);
   }
   // if player two is still alive, declare them the winner
   else {
     std::cout << "---------------------------------------------" << std::endl;
-    std::cout << "Player 2 " << player_two->get_type() << " wins!" << std::endl;
+    std::cout << "Player 2 " << player_two->get_type() << " wins!" << std::endl; 
     std::cout << "---------------------------------------------" << std::endl;
-    winners.add_winner(player_two);
+    team_two_winners.add_winner(player_two);
   }
+}
 
-  // deallocate players
-  delete player_one;
-  delete player_two;
+
+/*************************************************************
+** Description: Add player to team one
+*************************************************************/
+void Game::add_team_one(Character* player){
+  team_one_winners.add_winner(player);
 }
 
 /*************************************************************
+** Description: Add player to team two
+*************************************************************/
+void Game::add_team_two(Character* player){
+  team_two_winners.add_winner(player);
+}
+
+/************************************************************* 
 ** Description: Creates the players based on the type input
    by the user
 *************************************************************/
-Character* Game::create_player(character_type type){
+Character* Game::create_player(character_type type, std::string name){
   switch (type){
     case BARBARIAN:
     {
       Character* barbarian = new Barbarian();
+      barbarian->set_name(name);
       return barbarian;
     }
     break;
     case VAMPIRE:
     {
       Character* vampire = new Vampire();
+      vampire->set_name(name);
       return vampire;
     }
     break;
-    case BLUE_MEN:
+    case BLUE_MEN: 
     {
       Character* blue_men = new Blue_Men();
+      blue_men->set_name(name);
       return blue_men;
     }
     break;
     case MEDUSA:
     {
       Character* medusa = new Medusa();
+      medusa->set_name(name);
       return medusa;
     }
     break;
     case HARRY_POTTER:
     {
       Character* harry_potter = new Harry_Potter();
+      harry_potter->set_name(name);
       return harry_potter;
     }
     break;

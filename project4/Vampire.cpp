@@ -87,38 +87,9 @@ void Vampire::special_ability(){
 }
 
 /*************************************************************
-** Description: Alive function checks whether or not the
-   player is alive. Returns a boolean value true/false to the
-   Game class to determine when to end the game.
-*************************************************************/
-bool Vampire::alive(){
-  if (strength > 0){
-    return true;
-  }
-  else {
-    return false;
-  }
-}
-
-/*************************************************************
-** Description: Get armor function returns the armor of the
-   Vampire.
-*************************************************************/
-int Vampire::get_armor(){
-  return armor;
-}
-
-/*************************************************************
 ** Description: Get type function returns the type - used only
    for displaying the winner.
 *************************************************************/
 std::string Vampire::get_type(){
   return "Vampire";
-}
-
-/*************************************************************
-** Description: Get strength function returns the strength. 
-*************************************************************/
-int Vampire::get_strength(){
-  return strength;
 }

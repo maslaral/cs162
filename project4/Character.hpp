@@ -24,6 +24,7 @@ class Character {
     int num_die_defend;
     int num_sides_defend;
     Character* next;
+    std::string name;
   public:
     // constructor
     Character();
@@ -35,14 +36,18 @@ class Character {
     virtual int defense() = 0;
     virtual void inflict_damage(int) = 0;
     virtual void special_ability() = 0;
-    virtual bool alive() = 0;
+    bool alive();
     
     // getter functions
-    virtual int get_armor() = 0;
+    int get_armor();
+    int get_strength();
+    std::string get_name();
     virtual std::string get_type() = 0;
-    virtual int get_strength() = 0;
 
-    // functions for queue
+    // setter functions
+    void set_name(std::string);
+
+    // functions for queue and stack
     Character* get_next();
     void set_next(Character* next);
 };

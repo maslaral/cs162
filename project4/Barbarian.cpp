@@ -69,39 +69,9 @@ void Barbarian::special_ability(){
 }
 
 /*************************************************************
-** Description: Alive function checks whether or not the
-   player is alive. Returns a boolean value true/false to the
-   Game class to determine when to end the game.
-*************************************************************/
-bool Barbarian::alive(){
-  if (strength > 0){
-    return true;
-  }
-  else {
-    return false;
-  }
-}
-
-/*************************************************************
-** Description: Get armor function returns the armor of the
-   Barbarian.
-*************************************************************/
-int Barbarian::get_armor(){
-  return armor;
-}
-
-/*************************************************************
 ** Description: Get type function returns the type - used only
    for displaying the winner.
 *************************************************************/
 std::string Barbarian::get_type(){
   return "Barbarian";
-}
-
-/*************************************************************
-** Description: Get strength function returns the strength of
-   the Barbarian.
-*************************************************************/
-int Barbarian::get_strength(){
-  return strength;
 }

@@ -19,9 +19,12 @@
 #include "Harry_Potter.hpp"
 #include "Winner_Queue.hpp"
 
+#include <string>
+
 class Game {
   private:
-    Winner_Queue winners;
+    Winner_Queue team_one_winners;
+    Winner_Queue team_two_winners;
   public:
     // constructor
     Game();
@@ -29,10 +32,14 @@ class Game {
     ~Game();
 
     // gameplay functions
-    Character* create_player(character_type);
-    void play(character_type, character_type);
+    Character* create_player(character_type, std::string);
+    void play(Character*, Character*);
     void play_round(Character*, Character*);
     void get_round_start_values(Character*, Character*);
+
+    // add players to teams
+    void add_team_one(Character*);
+    void add_team_two(Character*);
 };
 
 #endif

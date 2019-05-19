@@ -79,39 +79,9 @@ void Blue_Men::special_ability(){
 }
 
 /*************************************************************
-** Description: Alive function checks whether or not the
-   player is alive. Returns a boolean value true/false to the
-   Game class to determine when to end the game.
-*************************************************************/
-bool Blue_Men::alive(){
-  if (strength > 0){
-    return true;
-  }
-  else {
-    return false;
-  }
-}
-
-/*************************************************************
-** Description: Get armor function returns the armor of the
-   Blue Men.
-*************************************************************/
-int Blue_Men::get_armor(){
-  return armor;
-}
-
-/*************************************************************
 ** Description: Get type function returns the type - used only
    for displaying the winner.
 *************************************************************/
 std::string Blue_Men::get_type(){
   return "Blue Men";
 }
-
-/*************************************************************
-** Description: Get strength function returns the strength. 
-*************************************************************/
-int Blue_Men::get_strength(){
-  return strength;
-}
-

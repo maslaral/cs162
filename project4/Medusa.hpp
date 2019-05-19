@@ -23,11 +23,8 @@ class Medusa : public Character {
     virtual int defense();
     virtual void inflict_damage(int);
     virtual void special_ability();
-    virtual bool alive();
 
     // getter functions
-    virtual int get_armor();
-    virtual int get_strength();
     virtual std::string get_type();
 };
 
