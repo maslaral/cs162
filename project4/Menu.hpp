@@ -34,6 +34,8 @@ class Menu
     Menu();
     // create the menu with a prompt
     Menu(std::string);
+    // set menu prompt
+    void setPrompt(std::string);
     // add options to the menu
     void addOptions(std::string);
     // output the menu of choices

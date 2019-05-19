@@ -18,8 +18,10 @@
 #include "Medusa.hpp"
 #include "Harry_Potter.hpp"
 #include "Winner_Queue.hpp"
+#include "Menu.hpp"
 
 #include <string>
+#include <iostream>
 
 class Game {
   private:
@@ -38,8 +40,7 @@ class Game {
     void get_round_start_values(Character*, Character*);
 
     // add players to teams
-    void add_team_one(Character*);
-    void add_team_two(Character*);
+    void add_team(int);
 };
 
 #endif

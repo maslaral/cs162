@@ -7,7 +7,6 @@
    functions to attack, defend, and inflict damage. 
 *************************************************************/
 #include "Game.hpp"
-#include <iostream>
 
 /*************************************************************
 ** Description: Default constructor for the Game object.
@@ -52,17 +51,40 @@ void Game::play(Character* player_one, Character* player_two){
 
 
 /*************************************************************
-** Description: Add player to team one
+** Description: Add player to team
 *************************************************************/
-void Game::add_team_one(Character* player){
-  team_one_winners.add_winner(player);
-}
+void Game::add_team(int team){
+  // store name of player
+  std::string name;
+ 
+  // initialize menu
+  Menu choose_type("What type of player?");
+  choose_type.addOptions("Barbarian");
+  choose_type.addOptions("Vampire");
+  choose_type.addOptions("Blue Men");
+  choose_type.addOptions("Medusa");
+  choose_type.addOptions("Harry Potter");
 
-/*************************************************************
-** Description: Add player to team two
-*************************************************************/
-void Game::add_team_two(Character* player){
-  team_two_winners.add_winner(player);
+  // prompt user for name of player
+  std::cout << "What do you want to name player?" << std::endl;
+  std::cout << "---------------------------------------------" << std::endl;
+  std::cin >> name;
+  std::cout << std::endl;
+
+  // prompt user for the type of player
+  choose_type.outputMenu();
+  character_type type = static_cast<character_type>(choose_type.getUserInput());
+
+  // create player
+  Character* player = create_player(type, name);
+
+  // add them to the correct team
+  if (team == 1){
+    team_one_winners.add_winner(player);
+  }
+  else {
+    team_two_winners.add_winner(player);
+  }
 }
 
 /************************************************************* 

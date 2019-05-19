@@ -43,6 +43,17 @@ Menu::Menu(std::string p)
   userInput = 1;
 }
 
+
+/*************************************************************
+** Description: Set Menu prompt
+*************************************************************/
+void Menu::setPrompt(std::string p)
+{
+  prompt = p;
+}
+
+
+
 /*************************************************************
 ** Description: Get function used to access the user input 
    outside of the class. This is used to pass these values to 
@@ -131,7 +142,8 @@ void Menu::integerValidation()
     std::cin.clear();
     std::cin.ignore(256, '\n');
     std::cin >> userInput;
-  }
+  } 
+  std::cout << std::endl;
 }
 
 /*************************************************************
@@ -152,4 +164,5 @@ void Menu::choiceValidation()
     std::cin.ignore(256, '\n');
     std::cin >> userInput;
   }
+  std::cout << std::endl;
 }
