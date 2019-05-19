@@ -43,12 +43,14 @@ void Game::play(character_type p_one, character_type p_two){
     std::cout << "---------------------------------------------" << std::endl;
     std::cout << "Player 1 " << player_one->get_type() << " wins!" << std::endl;
     std::cout << "---------------------------------------------" << std::endl;
+    winners.add_winner(player_one);
   }
   // if player two is still alive, declare them the winner
   else {
     std::cout << "---------------------------------------------" << std::endl;
     std::cout << "Player 2 " << player_two->get_type() << " wins!" << std::endl;
     std::cout << "---------------------------------------------" << std::endl;
+    winners.add_winner(player_two);
   }
 
   // deallocate players

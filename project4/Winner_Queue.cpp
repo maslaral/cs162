@@ -1,5 +1,5 @@
-include "Character.hpp"
-include "Winner_Queue.hpp"
+#include "Winner_Queue.hpp"
+#include <iostream>
 
 /*************************************************************
 ** Description: Constructor
@@ -21,7 +21,7 @@ Winner_Queue::~Winner_Queue(){
    by throwing an exception when this is the case.
 *************************************************************/
 bool Winner_Queue::is_empty() const {
-  if (head == nullptr){
+  if (on_deck == nullptr){
     return true;
   }
   else {
@@ -40,18 +40,19 @@ void Winner_Queue::add_winner(Character* victor){
     last = victor;
   }
   else {
-    last->next = victor;
+    last->set_next(victor);
     last = last->get_next();
   }
 }
-
 
 /*************************************************************
 ** Description: Function returns the player "on deck" or the
    next player to join the tournament.
 *************************************************************/
 Character* Winner_Queue::get_on_deck(){ 
-  return on_deck;
+  Character* temp = on_deck;
+  remove_on_deck();
+  return temp;
 }
 
 /*************************************************************
@@ -62,8 +63,13 @@ void Winner_Queue::remove_on_deck(){
   if (is_empty()){
     return;
   }
+  else if (on_deck == last){
+    on_deck = nullptr;
+    last = nullptr;
+  }
   else {
-    temp = on_deck;
+    Character* temp = on_deck;
     on_deck = on_deck->get_next();
     delete temp;
   }
+}

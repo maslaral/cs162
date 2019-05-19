@@ -25,6 +25,11 @@ class Character {
     int num_sides_defend;
     Character* next;
   public:
+    // constructor
+    Character();
+    // destructor
+    virtual ~Character();
+
     // game play functions
     virtual int attack() = 0;
     virtual int defense() = 0;
@@ -36,6 +41,10 @@ class Character {
     virtual int get_armor() = 0;
     virtual std::string get_type() = 0;
     virtual int get_strength() = 0;
+
+    // functions for queue
+    Character* get_next();
+    void set_next(Character* next);
 };
 
 #endif

@@ -17,11 +17,11 @@
 #include "Blue_Men.hpp"
 #include "Medusa.hpp"
 #include "Harry_Potter.hpp"
+#include "Winner_Queue.hpp"
 
 class Game {
   private:
-    Character* b;
-    Character* v;
+    Winner_Queue winners;
   public:
     // constructor
     Game();
