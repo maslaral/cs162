@@ -1,15 +1,8 @@
 /*************************************************************
-** Program name: Project 3
+** Program name: Project 4
 ** Author: Alex Maslar
-** Date: May 12 2019
-** Description: Medusa functions used to attack, defend, and
-   inflict damage in the Game. Includes methods to get Medusa
-   variables like type and strength, and a function that checks
-   if Medusa is still alive. In addition, the Medusa class has
-   a special ability function that is called when the dice roll
-   is 12. This ends the game by returning a value of 100 for 
-   the attack (the play_round function in Game handles this
-   logic).
+** Date: May 21 2019
+** Description: 
 *************************************************************/
 #include "Medusa.hpp"
 #include "roll_die.hpp"
@@ -20,7 +13,8 @@
    that sets the attributes based on the project requirements. 
 *************************************************************/
 Medusa::Medusa(){
-  strength = 8;
+  starting_strength = 8;
+  strength = starting_strength;
   armor = 3;
   num_die_attack = 2;
   num_sides_attack = 6;

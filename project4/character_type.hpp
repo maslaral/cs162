@@ -1,5 +1,5 @@
 /*************************************************************
-** Program name: Project 3
+  ** Program name: Project 4
 ** Author: Alex Maslar
 ** Date: May 12 2019
 ** Description: Character type enum - defines enum values for

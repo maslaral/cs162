@@ -1,17 +1,16 @@
 /*************************************************************
-** Program name: Project 3
+** Program name: Project 4
 ** Author: Alex Maslar
-** Date: May 12 2019
-** Description: Game functions used to create players,
-   coordinate the game and when the game is over, and call
-   functions to attack, defend, and inflict damage. 
+** Date: May 21 2019
+** Description:
 *************************************************************/
 #include "Game.hpp"
 
-/*************************************************************
-** Description: Default constructor for the Game object.
+/************************************************************* ** Description: Default constructor for the Game object.
 *************************************************************/
 Game::Game(){
+  team_one_score = 0;
+  team_two_score = 0;
 }
 
 /*************************************************************
@@ -21,37 +20,8 @@ Game::~Game(){
 }
 
 /*************************************************************
-** Description: Create players and coordinate game play - also
-   output result of match
-*************************************************************/
-void Game::play(Character* player_one, Character* player_two){
-  // play until one player is no longer alive
-  while (player_one->alive() && player_two->alive()){
-    play_round(player_one, player_two);
-    if (player_two->alive()){
-      play_round(player_two, player_one);
-    }
-  }
-
-  // if player one is still alive, declare them the winner
-  if (player_one->alive()){
-    std::cout << "---------------------------------------------" << std::endl;
-    std::cout << "Player 1 " << player_one->get_type() << " wins!" << std::endl;
-    std::cout << "---------------------------------------------" << std::endl;
-    team_one_winners.add_winner(player_one);
-  }
-  // if player two is still alive, declare them the winner
-  else {
-    std::cout << "---------------------------------------------" << std::endl;
-    std::cout << "Player 2 " << player_two->get_type() << " wins!" << std::endl; 
-    std::cout << "---------------------------------------------" << std::endl;
-    team_two_winners.add_winner(player_two);
-  }
-}
-
-
-/*************************************************************
-** Description: Add player to team
+** Description: Add player to team - takes an integer as an
+   argument which determines which team to add the player to.
 *************************************************************/
 void Game::add_team(int team){
   // store name of player
@@ -80,16 +50,16 @@ void Game::add_team(int team){
 
   // add them to the correct team
   if (team == 1){
-    team_one_winners.add_winner(player);
+    team_one_lineup.add_winner(player);
   }
   else {
-    team_two_winners.add_winner(player);
+    team_two_lineup.add_winner(player);
   }
 }
 
 /************************************************************* 
 ** Description: Creates the players based on the type input
-   by the user
+   by the user.
 *************************************************************/
 Character* Game::create_player(character_type type, std::string name){
   switch (type){
@@ -136,16 +106,109 @@ Character* Game::create_player(character_type type, std::string name){
 }
 
 /*************************************************************
+** Description: Plays the tournament until one of the team
+   has no more winners left. At this point, it prints out 
+   the winning team. 
+*************************************************************/
+void Game::play_tournament(){
+  // play until one team dies
+  while (teams_alive()){
+    play_matchup();
+  }
+
+  // print out winner based on score
+  if (team_one_score < team_two_score){
+    std::cout << "                 TEAM 2 WINS                 " << std::endl;
+  }
+  else if (team_one_score > team_two_score){
+    std::cout << "                 TEAM 1 WINS                 " << std::endl;
+  }
+  else {
+    std::cout << "                 GAME IS TIE                 " << std::endl;
+  }
+
+  std::cout << "---------------------------------------------" << std::endl;
+  std::cout << "Team 1 Score: " << team_one_score << std::endl;
+  std::cout << "Team 2 Score: " << team_two_score << std::endl;
+  
+  Menu display_losers("Do you want to display the losers?");
+  display_losers.addOptions("Yes");
+  display_losers.addOptions("No");
+  display_losers.outputMenu();
+
+  if (display_losers.getUserInput() == 1){
+    losers.print_losers();
+  }
+}
+
+/*************************************************************
+** Description: Check if both teams are alive - controls
+   the flow of the game - tournament ends when one of the teams
+   winner bracket is empty.
+*************************************************************/
+bool Game::teams_alive(){
+  if (team_one_lineup.is_empty() || team_two_lineup.is_empty()){
+    return false;
+  }
+  else {
+    return true;
+  }
+}
+
+/*************************************************************
+** Description: Create players and coordinate game play - also
+   output result of matchup.
+*************************************************************/
+void Game::play_matchup(){
+  // get players on deck
+  Character* player_one = team_one_lineup.get_on_deck();
+  Character* player_two = team_two_lineup.get_on_deck();
+
+  // play until one player is no longer alive
+  while (player_one->alive() && player_two->alive()){
+    play_turn(player_one, player_two);
+    if (player_two->alive()){
+      play_turn(player_two, player_one);
+    }
+  }
+
+  // if player one is still alive, declare them the winner
+  if (player_one->alive()){
+    std::cout << "---------------------------------------------" << std::endl;
+    std::cout << "Player 1 " << player_one->get_type() << " wins!" << std::endl;
+    std::cout << "---------------------------------------------" << std::endl;
+
+    team_one_lineup.add_winner(player_one);
+    team_one_score += 2;
+
+    losers.add_loser(player_two);
+    team_two_score -= 1;
+  }
+  // if player two is still alive, declare them the winner
+  else {
+    std::cout << "---------------------------------------------" << std::endl;
+    std::cout << "Player 2 " << player_two->get_type() << " wins!" << std::endl; 
+    std::cout << "---------------------------------------------" << std::endl;
+
+    team_two_lineup.add_winner(player_two);
+    team_two_score += 2;
+
+    losers.add_loser(player_one);
+    team_one_score -= 1;
+  }
+}
+
+/*************************************************************
 ** Description: Plays each round of game, calls functions
    for attacking and defending, calculates the resulting damage,
    and outputs the result of each round.
 *************************************************************/
-void Game::play_round(Character* attacker, Character* defender){
+void Game::play_turn(Character* attacker, Character* defender){
   int damage = 0;
   int attack_points, defense_points, armor, defender_ending_strength;
 
   // present the beginning values to the user
-  get_round_start_values(attacker, defender);
+  get_start_attributes(attacker, defender);
   
   // calling the attack and defend functions
   attack_points = attacker->attack();
@@ -187,9 +250,9 @@ void Game::play_round(Character* attacker, Character* defender){
 }
 
 /*************************************************************
-** Description: Prints the round result values
+** Description: Prints the round result values.
 *************************************************************/
-void Game::get_round_start_values(Character* attacker, Character* defender){
+void Game::get_start_attributes(Character* attacker, Character* defender){
   std::cout << "---------------------------------------------" << std::endl;
   std::cout << "                ROUND RESULTS                " << std::endl;
   std::cout << "---------------------------------------------" << std::endl;

@@ -1,11 +1,8 @@
 /*************************************************************
-** Program name: Project 3
+** Program name:
 ** Author: Alex Maslar
-** Date: May 11 2019
-** Description: Barbarian functions used to attack, defend, 
-   and inflict damage in the Game. Includes methods to get
-   Barbarian variables like type and strength, and a function
-   that checks if the Barbarian is still alive.
+** Date: May 21 2019
+** Description: 
 *************************************************************/
 #include "Barbarian.hpp"
 #include "roll_die.hpp"
@@ -15,7 +12,8 @@
    that sets the attributes based on the project requirements.
 *************************************************************/
 Barbarian::Barbarian(){
-  strength = 12;
+  starting_strength = 12;
+  strength = starting_strength;
   armor = 0;
   num_die_attack = 2;
   num_sides_attack = 6;

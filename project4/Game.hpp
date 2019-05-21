@@ -1,11 +1,8 @@
 /*************************************************************
-** Program name: Project 3
+** Program name: Project 4
 ** Author: Alex Maslar
-** Date: May 12 2019
-** Description: Game header file - includes pointers to 
-   Character objects as private variables. In addition,
-   declares methods for creating players, playing the game,
-   playing each round, and getting round values. 
+** Date: May 21 2019
+** Description: 
 *************************************************************/
 #ifndef GAME_HPP
 #define GAME_HPP
@@ -18,6 +15,7 @@
 #include "Medusa.hpp"
 #include "Harry_Potter.hpp"
 #include "Winner_Queue.hpp"
+#include "Loser_Stack.hpp"
 #include "Menu.hpp"
 
 #include <string>
@@ -25,8 +23,11 @@
 
 class Game {
   private:
-    Winner_Queue team_one_winners;
-    Winner_Queue team_two_winners;
+    Winner_Queue team_one_lineup;
+    Winner_Queue team_two_lineup;
+    Loser_Stack losers;
+    int team_one_score;
+    int team_two_score;
   public:
     // constructor
     Game();
@@ -35,9 +36,11 @@ class Game {
 
     // gameplay functions
     Character* create_player(character_type, std::string);
-    void play(Character*, Character*);
-    void play_round(Character*, Character*);
-    void get_round_start_values(Character*, Character*);
+    void play_tournament();
+    bool teams_alive();
+    void play_matchup();
+    void play_turn(Character*, Character*);
+    void get_start_attributes(Character*, Character*);
 
     // add players to teams
     void add_team(int);

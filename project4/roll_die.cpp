@@ -1,7 +1,7 @@
 /*************************************************************
-** Program name: Project 3
+** Program name: Project 4
 ** Author: Alex Maslar
-** Date: May 12 2019
+** Date: May 21 2019
 ** Description: Roll die function implementation that rolls
    the die based on each player type.
 *************************************************************/

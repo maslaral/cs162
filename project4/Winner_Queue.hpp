@@ -1,3 +1,9 @@
+/*************************************************************
+** Program name: Project 4
+** Author: Alex Maslar
+** Date: May 21 2019
+** Description: 
+*************************************************************/
 #ifndef WINNER_QUEUE_HPP
 #define WINNER_QUEUE_HPP
 

@@ -1,15 +1,8 @@
 /*************************************************************
-** Program name: Project 3
+** Program name: Project 4
 ** Author: Alex Maslar
-** Date: May 12 2019
-** Description: Vampire function used to attack, defend, and
-   inflict damage in the Game. Includes methods to get Vampire
-   variables like type and strength, and a function that checks
-   if the Vampire is alive. In addition, the defense function
-   for Vampires includes a special ability where the defense
-   return is 100 - meaning no impact with the attack. This 
-   is printed out to the user through logic in the Game
-   class as if the attacker didn't attack.
+** Date: May 21 2019
+** Description: 
 *************************************************************/
 #include "Vampire.hpp"
 #include "roll_die.hpp"
@@ -21,7 +14,8 @@
    that sets the attributes based on the project requirements.
 *************************************************************/
 Vampire::Vampire(){
-  strength = 18;
+  starting_strength = 18;
+  strength = starting_strength;
   armor = 1;
   num_die_attack = 1;
   num_sides_attack = 12;

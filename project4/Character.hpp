@@ -1,22 +1,18 @@
 /*************************************************************
-** Program name: Project 3
+** Program name: Project 4
 ** Author: Alex Maslar
-** Date: May 12 2019
-** Description: Character header file - the Character class is
-   an abstract class (i.e. there can be a type of character
-   but not just a Character). The class includes variables 
-   relevant to all Character types likes strength, armor, and
-   number of die and sides. In addition, it includes headers 
-   for pure virtual functinos like attack, defense, inflict
-   damage, etc. which are all overwritten in the Character
-   sub-classes.
+** Date: May 21 2019
+** Description: 
 *************************************************************/
 #ifndef CHARACTER_HPP
 #define CHARACTER_HPP
+
+#include "roll_die.hpp"
 #include <string>
 
 class Character {
   protected:
+    int starting_strength;
     int strength;
     int armor;
     int num_die_attack;
@@ -50,6 +46,8 @@ class Character {
     // functions for queue and stack
     Character* get_next();
     void set_next(Character* next);
+
+    void recover();
 };
 
 #endif

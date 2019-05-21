@@ -1,7 +1,7 @@
 /*************************************************************
-** Program name: Lab 5
+** Program name: Project 4
 ** Author: Alex Maslar
-** Date: April 28 2019
+** Date: May 21 2019
 ** Description: The menu class represents the user menu. It
    contains information about the menu that is presented to the
    user, including the prompt, the options presented, the

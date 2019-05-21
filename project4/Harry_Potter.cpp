@@ -1,13 +1,8 @@
 /*************************************************************
-** Program name: Project 3
+** Program name: Project 4
 ** Author: Alex Maslar
-** Date: May 12 2019
-** Description: Harry Potter functions used to attack, defend,
-   and inflict damage in the Game. Includes methods to get 
-   Harry Potter variables like type and strength, and a function
-   that checks if Harry Potter is still alive. In addition, 
-   the Harry Potter special ability function gives Harry Potter
-   an additional life if his strength falls below 0.
+** Date: May 21 2019
+** Description: 
 *************************************************************/
 #include "Harry_Potter.hpp"
 #include "roll_die.hpp"
@@ -19,7 +14,8 @@
    that sets the attributes based on the project requirements. 
 *************************************************************/
 Harry_Potter::Harry_Potter(){
-  strength = 10;
+  starting_strength = 10;
+  strength = starting_strength;
   lives = 2;
   armor = 0;
   num_die_attack = 2;

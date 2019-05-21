@@ -1,3 +1,9 @@
+/*************************************************************
+** Program name: Project 4
+** Author: Alex Maslar
+** Date: May 21 2019
+** Description: 
+*************************************************************/
 #include "Character.hpp"
 
 Character::Character(){
@@ -42,5 +48,19 @@ bool Character::alive(){
   }
   else {
     return false;
+  }
+}
+
+void Character::recover(){
+  if (starting_strength != strength){
+    int result = roll_die(1, 10);
+    result *= 0.1;
+    int new_strength = starting_strength * result;
+
+    // if the new strength is greater than the current strength,
+    // recover
+    if (new_strength > strength){
+      strength = new_strength;
+    }
   }
 }

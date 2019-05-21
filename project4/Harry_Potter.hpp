@@ -1,11 +1,8 @@
 /*************************************************************
-** Program name: Project 3
+** Program name: Project 4
 ** Author: Alex Maslar
-** Date: May 12 2019
-** Description: Header file for the Harry Potter object - 
-   includes a private variable for number of lives that is
-   unique to the Harry Potter subclass. Has public access to
-   the base class Character.
+** Date: May 21 2019
+** Description: 
 *************************************************************/
 #ifndef HARRY_POTTER_HPP
 #define HARRY_POTTER_HPP

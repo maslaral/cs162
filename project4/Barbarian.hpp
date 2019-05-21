@@ -1,10 +1,8 @@
 /*************************************************************
-** Program name: Project 3
+** Program name: Project 4
 ** Author: Alex Maslar
-** Date: May 11 2019
-** Description: Barbarian header file - includes no private 
-   variables as all are handled in the abstract base Character 
-   class. Has public access to the base class Character.
+** Date: May 21 2019
+** Description: 
 *************************************************************/
 #ifndef BARBARIAN_HPP
 #define BARBARIAN_HPP

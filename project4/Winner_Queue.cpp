@@ -1,8 +1,15 @@
+/*************************************************************
+** Program name: Project 4
+** Author: Alex Maslar
+** Date: May 21 2019
+** Description: 
+*************************************************************/
 #include "Winner_Queue.hpp"
 #include <iostream>
 
 /*************************************************************
-** Description: Constructor
+** Description: Constructor - sets on deck and last to nullptr
+   to indicate an empty queue.
 *************************************************************/
 Winner_Queue::Winner_Queue(){
   on_deck = nullptr;
@@ -10,7 +17,7 @@ Winner_Queue::Winner_Queue(){
 }
 
 /*************************************************************
-** Description: Destructor
+** Description: Virtual destructor
 *************************************************************/
 Winner_Queue::~Winner_Queue(){
 }
@@ -35,13 +42,17 @@ bool Winner_Queue::is_empty() const {
    winner queue.
 *************************************************************/
 void Winner_Queue::add_winner(Character* victor){
+  victor->recover();
+
   if (is_empty()){
     on_deck = victor;
     last = victor;
+    on_deck->set_next(nullptr);
   }
   else {
     last->set_next(victor);
     last = last->get_next();
+    last->set_next(nullptr);
   }
 }
 
@@ -50,9 +61,21 @@ void Winner_Queue::add_winner(Character* victor){
    next player to join the tournament.
 *************************************************************/
 Character* Winner_Queue::get_on_deck(){ 
+  if (is_empty()){
+    return nullptr;
+  }
+  
+  else if (on_deck->get_next() == nullptr){
+    Character* temp = on_deck;
+    on_deck = nullptr;
+    return temp;
+  }
+
+  else {
   Character* temp = on_deck;
-  remove_on_deck();
+  on_deck = on_deck->get_next();
   return temp;
+  }
 }
 
 /*************************************************************

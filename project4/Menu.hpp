@@ -1,14 +1,8 @@
 /*************************************************************
-** Program name: Lab 5
+** Program name: Project 4 
 ** Author: Alex Maslar
-** Date: April 28 2019
-** Description: Header file for the Menu class. The Menu class
-   has variables specific to the user menu, including the 
-   prompt presented to the user, the options, min and max
-   values, and user input. The Menu class also includes functions
-   like addOptions (which is used to add an option to the user
-   menu) and validation methods (which checks if the user input
-   is within the min and max ranges set for the menu).
+** Date:
+** Drbescription:
 *************************************************************/
 #ifndef MENU_HPP
 #define MENU_HPP
