@@ -1,12 +1,8 @@
 /*************************************************************
-** Program name:
+** Program name: Project 4
 ** Author: Alex Maslar
-** Date: April 21 2019
-** Description: Header file for the Game class. The class holds
-   the variables for the game, like the number of rounds played,
-   the score for each player (incremented each round), and the
-   score for each player. It also contains pointers to Die
-   objects. 
+** Date: May 21 2019
+** Description: 
 *************************************************************/
 #ifndef GAME_HPP
 #define GAME_HPP
