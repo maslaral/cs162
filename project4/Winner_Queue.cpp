@@ -20,6 +20,18 @@ Winner_Queue::Winner_Queue(){
 ** Description: Virtual destructor
 *************************************************************/
 Winner_Queue::~Winner_Queue(){
+  if (on_deck == nullptr){
+    return;
+  }
+
+  Character* garbage = on_deck;
+
+  while (garbage->get_next() != last){
+    on_deck = on_deck->get_next();
+    delete garbage;
+    garbage = on_deck;
+  }
+  delete garbage; // delete last
 }
 
 /*************************************************************
@@ -64,13 +76,11 @@ Character* Winner_Queue::get_on_deck(){
   if (is_empty()){
     return nullptr;
   }
-  
   else if (on_deck->get_next() == nullptr){
     Character* temp = on_deck;
     on_deck = nullptr;
     return temp;
   }
-
   else {
   Character* temp = on_deck;
   on_deck = on_deck->get_next();

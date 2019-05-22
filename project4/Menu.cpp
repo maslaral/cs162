@@ -13,8 +13,9 @@
    options to the user and accepts an integer value related to
    one of those options.
 *************************************************************/
-#include <iostream>
 #include "Menu.hpp"
+
+#include <iostream>
 #include <vector>
 #include <string>
 

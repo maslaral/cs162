@@ -160,9 +160,12 @@ bool Game::teams_alive(){
    output result of matchup.
 *************************************************************/
 void Game::play_matchup(){
-  // get players on deck
+  // get players on deck and remove
   Character* player_one = team_one_lineup.get_on_deck();
+  team_one_lineup.remove_on_deck();
+
   Character* player_two = team_two_lineup.get_on_deck();
+  team_two_lineup.remove_on_deck();
 
   // play until one player is no longer alive
   while (player_one->alive() && player_two->alive()){
