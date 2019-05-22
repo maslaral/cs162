@@ -23,15 +23,19 @@ Winner_Queue::~Winner_Queue(){
   if (on_deck == nullptr){
     return;
   }
-
-  Character* garbage = on_deck;
-
-  while (garbage->get_next() != last){
-    on_deck = on_deck->get_next();
-    delete garbage;
-    garbage = on_deck;
+  else if (on_deck == last){
+    delete last;
   }
-  delete garbage; // delete last
+  else {
+    Character* garbage = on_deck;
+
+    while (garbage->get_next() != last){
+      on_deck = on_deck->get_next();
+      delete garbage;
+      garbage = on_deck;
+    }
+    delete garbage; // delete last
+  }
 }
 
 /*************************************************************
