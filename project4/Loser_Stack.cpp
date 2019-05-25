@@ -50,10 +50,13 @@ void Loser_Stack::print_losers(){
   if (is_empty()){
     return;
   }
+
   Character* temp = top;
+
   while (temp != nullptr){
     std::cout << temp->get_name() << " - " << temp->get_type() << std::endl;
     temp = temp->get_next();
   }
+
   delete temp;
 }

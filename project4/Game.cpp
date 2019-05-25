@@ -112,9 +112,9 @@ Character* Game::create_player(character_type type, std::string name){
 *************************************************************/
 void Game::play_tournament(){
   // play until one team dies
-  while (teams_alive()){
+  do {
     play_matchup();
-  }
+  } while (teams_alive());
 
   // print out winner based on score
   if (team_one_score < team_two_score){
@@ -124,7 +124,7 @@ void Game::play_tournament(){
     std::cout << "                 TEAM 1 WINS                 " << std::endl;
   }
   else {
-    std::cout << "                 GAME IS TIE                 " << std::endl;
+    std::cout << "                GAME IS A TIE                " << std::endl;
   }
 
   std::cout << "---------------------------------------------" << std::endl;
