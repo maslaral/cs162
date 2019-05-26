@@ -68,3 +68,16 @@ void Loser_Stack::print_losers(){
     std::cout << temp->get_name() << " - " << temp->get_type() << std::endl;
   }
 }
+
+void Loser_Stack::clear(){
+  if (is_empty()){
+    return;
+  }
+
+  Character* temp = top;
+  while (temp != nullptr){
+    temp = top->get_next();
+    delete top;
+    top = temp;
+  }
+}

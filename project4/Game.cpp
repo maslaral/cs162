@@ -84,13 +84,13 @@ void Game::create_player(character_type type, std::string name){
     break;
     case MEDUSA:
     {
-      Character* player = new Medusa();
+      player = new Medusa();
       player->set_name(name);
     }
     break;
     case HARRY_POTTER:
     {
-      Character* player = new Harry_Potter();
+      player = new Harry_Potter();
       player->set_name(name);
     }
     break;
@@ -131,6 +131,10 @@ void Game::play_tournament(){
   if (display_losers.getUserInput() == 1){
     losers.print_losers();
   }
+
+  team_one_lineup.clear();
+  team_two_lineup.clear();
+  losers.clear();
 }
 
 /*************************************************************

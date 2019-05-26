@@ -99,3 +99,26 @@ void Winner_Queue::remove_on_deck(){
     delete temp;
   }
 }
+
+/*************************************************************
+** Description: Virtual destructor
+*************************************************************/
+void Winner_Queue::clear(){
+  if (on_deck == nullptr){
+    return;
+  }
+  else if (on_deck == last){
+    on_deck = nullptr;
+    last = nullptr;
+  }
+  else {
+    Character* garbage = on_deck;
+
+    while (garbage != last){
+      on_deck = on_deck->get_next();
+      delete garbage;
+      garbage = on_deck;
+    }
+    delete garbage; // delete last
+  }
+}

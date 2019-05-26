@@ -21,6 +21,7 @@ class Loser_Stack {
     bool is_empty() const;
     void add_loser(Character*&);
     void print_losers();
+    void clear();
 };
 
 #endif
