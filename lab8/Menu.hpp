@@ -1,8 +1,17 @@
 /*************************************************************
-** Program name: Project 4 
+** Program name: Lab 8
 ** Author: Alex Maslar
-** Date:
-** Drbescription:
+** Date: May 21 2019
+** Description: The menu class represents the user menu. It
+   contains information about the menu that is presented to the
+   user, including the prompt, the options presented, the
+   minimum and maximum values allowed for entry, and finally
+   the user input itself. In addition, the class contains
+   methods that check that the user input is within the min and
+   max range. The Menu class can be called without options and
+   it then accepts integer values. With options, it presents
+   options to the user and accepts an integer value related to
+   one of those options.
 *************************************************************/
 #ifndef MENU_HPP
 #define MENU_HPP

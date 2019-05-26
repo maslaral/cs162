@@ -1,5 +1,5 @@
 /*************************************************************
-** Program name: Project 4
+** Program name: Lab 8
 ** Author: Alex Maslar
 ** Date: May 21 2019
 ** Description: The menu class represents the user menu. It

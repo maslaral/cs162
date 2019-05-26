@@ -10,6 +10,10 @@
 *************************************************************/
 #include "create_array.hpp"
 
+/*************************************************************
+** Description: Function creates the array from the file and
+   and returns the array.
+*************************************************************/
 int* create_array(std::string file_name, int size){
   // initialize stream and open file
   std::ifstream ifs;
