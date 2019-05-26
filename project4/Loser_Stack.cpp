@@ -13,19 +13,6 @@ Loser_Stack::Loser_Stack(){
 }
 
 Loser_Stack::~Loser_Stack(){
-/*  if (is_empty()){
-    return;
-  }
-
-  Character* temp = top;
-  while (temp != nullptr){
-    temp = top->get_next();
-    delete top;
-    top = temp;
-  }
-
-  delete temp;
-*/
 }
 
 bool Loser_Stack::is_empty() const {
