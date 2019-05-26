@@ -2,11 +2,17 @@
 ** Program name: Project 4
 ** Author: Alex Maslar
 ** Date: May 21 2019
-** Description:
+** Description: Game class coordinates the game play and 
+   creates players for the game. It includes a function to 
+   add players to a team, a function to play game matchups 
+   by attacking/defending/inflicting damage on each player,
+   and a function to play each round and set the score of the
+   game.
 *************************************************************/
 #include "Game.hpp"
 
-/************************************************************* ** Description: Default constructor for the Game object.
+/************************************************************* 
+** Description: Default constructor for the Game object.
 *************************************************************/
 Game::Game(){
   team_one_score = 0;
@@ -123,6 +129,7 @@ void Game::play_tournament(){
   std::cout << "Team 1 Score: " << team_one_score << std::endl;
   std::cout << "Team 2 Score: " << team_two_score << std::endl;
   
+  // prompt the user to display the loser
   Menu display_losers("Do you want to display the losers?");
   display_losers.addOptions("Yes");
   display_losers.addOptions("No");
@@ -132,6 +139,7 @@ void Game::play_tournament(){
     losers.print_losers();
   }
 
+  // clears the queue at the end of the tournament
   team_one_lineup.clear();
   team_two_lineup.clear();
   losers.clear();

@@ -2,16 +2,23 @@
 ** Program name: Project 4
 ** Author: Alex Maslar
 ** Date: May 21 2019
-** Description: 
+** Description: Implementation of Loser Stack which stores the
+   losers of the tournament. Includes functions to 
 *************************************************************/
 #include "Loser_Stack.hpp"
 
 #include <iostream>
 
+/*************************************************************
+** Description:
+*************************************************************/
 Loser_Stack::Loser_Stack(){
   top = nullptr;
 }
 
+/*************************************************************
+** Description:
+*************************************************************/
 Loser_Stack::~Loser_Stack(){
   if (is_empty()){
     return;
@@ -27,6 +34,9 @@ Loser_Stack::~Loser_Stack(){
   delete temp;
 }
 
+/*************************************************************
+** Description:
+*************************************************************/
 bool Loser_Stack::is_empty() const {
   if (top == nullptr){
     return true;
@@ -36,6 +46,9 @@ bool Loser_Stack::is_empty() const {
   }
 }
 
+/*************************************************************
+** Description:
+*************************************************************/
 void Loser_Stack::add_loser(Character* &loser){
   // add player to top
   if (is_empty()){
@@ -54,6 +67,9 @@ void Loser_Stack::add_loser(Character* &loser){
   }
 }
 
+/*************************************************************
+** Description:
+*************************************************************/
 void Loser_Stack::print_losers(){
   if (is_empty()){
     return;
@@ -69,6 +85,9 @@ void Loser_Stack::print_losers(){
   }
 }
 
+/*************************************************************
+** Description:
+*************************************************************/
 void Loser_Stack::clear(){
   if (is_empty()){
     return;

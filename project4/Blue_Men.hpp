@@ -2,7 +2,10 @@
 ** Program name: Project 4
 ** Author: Alex Maslar
 ** Date: May 21 2019
-** Description: 
+** Description: Blue men implementation - includes attack,
+   defend, and inflict damage functions. In addition, the
+   class contains the variables starting strength, strength,
+   armor, and number of die.
 *************************************************************/
 #ifndef BLUE_MEN_HPP
 #define BLUE_MEN_HPP

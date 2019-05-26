@@ -2,7 +2,10 @@
 ** Program name: Project 4
 ** Author: Alex Maslar
 ** Date: May 21 2019
-** Description: 
+** Description: Character implementation - includes attack,
+   defend, and inflict damage functions. In addition, the
+   class contains the variables starting strength, strength,
+   armor, and number of die.
 *************************************************************/
 #ifndef CHARACTER_HPP
 #define CHARACTER_HPP
@@ -33,21 +36,18 @@ class Character {
     virtual void inflict_damage(int) = 0;
     virtual void special_ability() = 0;
     bool alive();
+    void recover();
     
     // getter functions
     int get_armor();
     int get_strength();
     std::string get_name();
     virtual std::string get_type() = 0;
+    Character* get_next();
 
     // setter functions
     void set_name(std::string);
-
-    // functions for queue and stack
-    Character* get_next();
     void set_next(Character* next);
-
-    void recover();
 };
 
 #endif

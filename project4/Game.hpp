@@ -2,7 +2,12 @@
 ** Program name: Project 4
 ** Author: Alex Maslar
 ** Date: May 21 2019
-** Description: 
+** Description: Game class coordinates the game play and 
+   creates players for the game. It includes a function to 
+   add players to a team, a function to play game matchups 
+   by attacking/defending/inflicting damage on each player,
+   and a function to play each round and set the score of the
+   game.
 *************************************************************/
 #ifndef GAME_HPP
 #define GAME_HPP

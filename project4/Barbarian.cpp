@@ -1,8 +1,11 @@
 /*************************************************************
-** Program name:
+** Program name: Project 4
 ** Author: Alex Maslar
 ** Date: May 21 2019
-** Description: 
+** Description: Barbarian implementation - includes attack,
+   defend, and inflict damage functions. In addition, the
+   class contains the variables starting strength, strength,
+   armor, and number of die.
 *************************************************************/
 #include "Barbarian.hpp"
 #include "roll_die.hpp"
