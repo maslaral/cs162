@@ -13,7 +13,7 @@ Loser_Stack::Loser_Stack(){
 }
 
 Loser_Stack::~Loser_Stack(){
-  if (is_empty()){
+/*  if (is_empty()){
     return;
   }
 
@@ -25,6 +25,7 @@ Loser_Stack::~Loser_Stack(){
   }
 
   delete temp;
+*/
 }
 
 bool Loser_Stack::is_empty() const {
@@ -73,11 +74,19 @@ void Loser_Stack::clear(){
   if (is_empty()){
     return;
   }
-
-  Character* temp = top;
-  while (temp != nullptr){
-    temp = top->get_next();
+  else if (top->get_next() == nullptr){
     delete top;
-    top = temp;
+    top = nullptr;
+  }
+  else {
+    Character* garbage = top;
+    
+    while (garbage->get_next() != nullptr){
+      top = top->get_next();
+      delete garbage;
+      garbage = top;
+    }
+    delete top;
+    top = nullptr;
   }
 }

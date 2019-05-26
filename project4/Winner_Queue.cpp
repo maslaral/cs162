@@ -20,7 +20,7 @@ Winner_Queue::Winner_Queue(){
 ** Description: Virtual destructor
 *************************************************************/
 Winner_Queue::~Winner_Queue(){
-  if (on_deck == nullptr){
+/*  if (on_deck == nullptr){
     return;
   }
   else if (on_deck == last){
@@ -36,6 +36,7 @@ Winner_Queue::~Winner_Queue(){
     }
     delete garbage; // delete last
   }
+*/
 }
 
 /*************************************************************
@@ -104,7 +105,7 @@ void Winner_Queue::remove_on_deck(){
 ** Description: Virtual destructor
 *************************************************************/
 void Winner_Queue::clear(){
-  if (on_deck == nullptr){
+  if (is_empty()){
     return;
   }
   else if (on_deck == last){
@@ -114,11 +115,12 @@ void Winner_Queue::clear(){
   else {
     Character* garbage = on_deck;
 
-    while (garbage != last){
+    while (garbage->get_next() != last){
       on_deck = on_deck->get_next();
       delete garbage;
       garbage = on_deck;
     }
-    delete garbage; // delete last
+    on_deck = nullptr;
+    last = nullptr;
   }
 }
