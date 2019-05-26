@@ -1,6 +1,6 @@
 /*************************************************************
 ** Program name: Project 4
-** Author: Alex Maslar 
+** Author: Alex Maslar
 ** Date: May 21 2019
 ** Description: 
 *************************************************************/
@@ -8,8 +8,8 @@
 
 #include <iostream>
 
-Loser_Stack::Loser_Stack(){ top = nullptr;
-  last = nullptr;
+Loser_Stack::Loser_Stack(){
+  top = nullptr;
 }
 
 Loser_Stack::~Loser_Stack(){
@@ -18,7 +18,7 @@ Loser_Stack::~Loser_Stack(){
   }
 
   Character* temp = top;
-  while (temp != last){
+  while (temp != nullptr){
     temp = top->get_next();
     delete top;
     top = temp;
@@ -36,35 +36,24 @@ bool Loser_Stack::is_empty() const {
   }
 }
 
-/*************************************************************
-** Description: Adds loser to the start of the stack - if 
-   the stack is empty, top and last are set to loser. In the
-   cases where the stack is not empty, the character is 
-   assigned to the top, and the last in the queue is adjusted
-   so the new top is next.
-*************************************************************/
 void Loser_Stack::add_loser(Character* &loser){
   // add player to top
   if (is_empty()){
     top = loser;
-    last = loser;
-    top->set_next(last);
-    last->set_next(top);
+    top->set_next(nullptr);
   }
   else {
-    Character* temp = top;
-    top = loser;
-    top->set_next(temp);
-    last->set_next(top);
+    loser->set_next(nullptr);
+    if (top->get_next() == nullptr){
+      top->set_next(loser);
+    }
+    else {
+      loser->set_next(top->get_next());
+      top->set_next(loser);
+    }
   }
 }
 
-/*************************************************************
-** Description: Prints the loser stack if there are losers
-   in the stack. It goes through the stack starting at the top
-   until the next in the stack equals last. At this point, it
-   prints the last loser in the stack.
-*************************************************************/
 void Loser_Stack::print_losers(){
   if (is_empty()){
     return;
@@ -72,10 +61,10 @@ void Loser_Stack::print_losers(){
 
   Character* temp = top;
 
-  while (temp != last){
-    std::cout << temp->get_name() << " - " << temp->get_type() << std::endl;
-    temp = temp->get_next();
-  }
+  std::cout << temp->get_name() << " - " << temp->get_type() << std::endl;
 
-  std::cout << last->get_name() << " - " << last->get_type() << std::endl;
+  while (temp->get_next() != nullptr){
+    temp = temp->get_next();
+    std::cout << temp->get_name() << " - " << temp->get_type() << std::endl;
+  }
 }

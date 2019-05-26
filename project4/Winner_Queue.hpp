@@ -24,7 +24,6 @@ class Winner_Queue {
     Character* get_on_deck();
     void remove_on_deck();
     void print_lineup();
-    void move_to_back();
 };
 
 #endif
