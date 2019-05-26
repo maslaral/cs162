@@ -2,7 +2,9 @@
 ** Program name: Project 4
 ** Author: Alex Maslar
 ** Date: May 21 2019
-** Description: 
+** Description: Implementation for the Winner Queue which stores
+   the winners of the tournament. Includes functions to add 
+   a winner, prints the winners, and clears the queue.
 *************************************************************/
 #ifndef WINNER_QUEUE_HPP
 #define WINNER_QUEUE_HPP

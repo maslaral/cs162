@@ -2,7 +2,10 @@
 ** Program name: Project 4
 ** Author: Alex Maslar
 ** Date: May 21 2019
-** Description: 
+** Description: Main function which includes menus for getting
+   the number of players and adds players to the teams. Also
+   calls the game function to play and asks the user if they
+   want to play again.
 *************************************************************/
 #include "Character.hpp"
 #include "Barbarian.hpp"

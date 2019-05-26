@@ -2,7 +2,9 @@
 ** Program name: Project 4
 ** Author: Alex Maslar
 ** Date: May 21 2019
-** Description: 
+** Description: Implementation of Loser Stack which stores the
+   losers of the tournament. Includes functions to add a loser,
+   prints the losers, and clears the stack.
 *************************************************************/
 #ifndef LOSER_STACK_HPP
 #define LOSER_STACK_HPP

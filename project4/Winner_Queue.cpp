@@ -2,7 +2,9 @@
 ** Program name: Project 4
 ** Author: Alex Maslar
 ** Date: May 21 2019
-** Description: 
+** Description: Implementation for the Winner Queue which stores
+   the winners of the tournament. Includes functions to add 
+   a winner, prints the winners, and clears the queue.
 *************************************************************/
 #include "Winner_Queue.hpp"
 #include <iostream>
@@ -17,7 +19,7 @@ Winner_Queue::Winner_Queue(){
 }
 
 /*************************************************************
-** Description: Virtual destructor
+** Description: Virtual destructor for the winner queue.
 *************************************************************/
 Winner_Queue::~Winner_Queue(){
 }
@@ -85,7 +87,8 @@ void Winner_Queue::remove_on_deck(){
 }
 
 /*************************************************************
-** Description: Virtual destructor
+** Description: Clears the queue if there are winners in it by
+   deleting each successive Character in the queue.
 *************************************************************/
 void Winner_Queue::clear(){
   if (is_empty()){
