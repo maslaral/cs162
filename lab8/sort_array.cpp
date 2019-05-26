@@ -26,7 +26,7 @@ std::string sort_array(int* array, int size){
     min_index = start_scan;
     min_value = array[start_scan];
 
-    for (int index = start_scan - 1; index < size; index++){
+    for (int index = start_scan; index < size; index++){
       if (array[index] < min_value){
         min_value = array[index];
         min_index = index;
