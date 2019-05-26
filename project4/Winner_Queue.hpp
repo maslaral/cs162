@@ -20,7 +20,7 @@ class Winner_Queue {
     ~Winner_Queue();
 
     bool is_empty() const;
-    void add_winner(Character*);
+    void add_winner(Character*&);
     Character* get_on_deck();
     void remove_on_deck();
     void print_lineup();

@@ -57,7 +57,7 @@ bool Winner_Queue::is_empty() const {
    function (the victor of previous round) in the end of the
    winner queue.
 *************************************************************/
-void Winner_Queue::add_winner(Character* victor){
+void Winner_Queue::add_winner(Character* &victor){
   victor->recover();
 
   if (is_empty()){
@@ -107,5 +107,6 @@ void Winner_Queue::remove_on_deck(){
     Character* temp = on_deck;
     on_deck = on_deck->get_next();
     temp = nullptr;
+    delete temp;
   }
 }

@@ -115,7 +115,7 @@ void Game::play_tournament(){
   else if (team_one_score > team_two_score){
     std::cout << "                 TEAM 1 WINS                 " << std::endl;
   }
-  else {
+  else if (team_one_score == team_two_score){
     std::cout << "                GAME IS A TIE                " << std::endl;
   }
 
