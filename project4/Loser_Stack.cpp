@@ -74,19 +74,13 @@ void Loser_Stack::clear(){
   if (is_empty()){
     return;
   }
-  else if (top->get_next() == nullptr){
-    delete top;
-    top = nullptr;
-  }
   else {
-    Character* garbage = top;
-    
-    while (garbage->get_next() != nullptr){
+    Character* garbage = nullptr;
+
+    while (top != nullptr){
+      garbage = top;
       top = top->get_next();
       delete garbage;
-      garbage = top;
     }
-    delete top;
-    top = nullptr;
   }
 }

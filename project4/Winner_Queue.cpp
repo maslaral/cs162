@@ -108,19 +108,13 @@ void Winner_Queue::clear(){
   if (is_empty()){
     return;
   }
-  else if (on_deck == last){
-    on_deck = nullptr;
-    last = nullptr;
-  }
   else {
-    Character* garbage = on_deck;
+    Character* garbage = nullptr;
 
-    while (garbage->get_next() != last){
+    while (on_deck != nullptr){
+      garbage = on_deck;
       on_deck = on_deck->get_next();
       delete garbage;
-      garbage = on_deck;
     }
-    on_deck = nullptr;
-    last = nullptr;
   }
 }
