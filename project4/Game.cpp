@@ -11,6 +11,7 @@
 Game::Game(){
   team_one_score = 0;
   team_two_score = 0;
+  player = nullptr;
 }
 
 /*************************************************************
@@ -46,7 +47,7 @@ void Game::add_team(int team){
   character_type type = static_cast<character_type>(choose_type.getUserInput());
 
   // create player
-  Character* player = create_player(type, name);
+  create_player(type, name);
 
   // add them to the correct team
   if (team == 1){
@@ -61,47 +62,38 @@ void Game::add_team(int team){
 ** Description: Creates the players based on the type input
    by the user.
 *************************************************************/
-Character* Game::create_player(character_type type, std::string name){
+void Game::create_player(character_type type, std::string name){
   switch (type){
     case BARBARIAN:
     {
-      Character* barbarian = new Barbarian();
-      barbarian->set_name(name);
-      return barbarian;
+      player = new Barbarian();
+      player->set_name(name);
     }
     break;
     case VAMPIRE:
     {
-      Character* vampire = new Vampire();
-      vampire->set_name(name);
-      return vampire;
+      player = new Vampire();
+      player->set_name(name);
     }
     break;
     case BLUE_MEN: 
     {
-      Character* blue_men = new Blue_Men();
-      blue_men->set_name(name);
-      return blue_men;
+      player = new Blue_Men();
+      player->set_name(name);
     }
     break;
     case MEDUSA:
     {
-      Character* medusa = new Medusa();
-      medusa->set_name(name);
-      return medusa;
+      Character* player = new Medusa();
+      player->set_name(name);
     }
     break;
     case HARRY_POTTER:
     {
-      Character* harry_potter = new Harry_Potter();
-      harry_potter->set_name(name);
-      return harry_potter;
+      Character* player = new Harry_Potter();
+      player->set_name(name);
     }
     break;
-    default:
-    {
-      return 0;
-    }
   }
 }
 
@@ -112,10 +104,10 @@ Character* Game::create_player(character_type type, std::string name){
 *************************************************************/
 void Game::play_tournament(){
   // play until one team dies
-  do {
+  while (teams_alive()){
     play_matchup();
-  } while (teams_alive());
-
+  }
+  
   // print out winner based on score
   if (team_one_score < team_two_score){
     std::cout << "                 TEAM 2 WINS                 " << std::endl;

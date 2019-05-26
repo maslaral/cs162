@@ -19,7 +19,7 @@ class Loser_Stack {
     ~Loser_Stack();
 
     bool is_empty() const;
-    void add_loser(Character*);
+    void add_loser(Character*&);
     void print_losers();
 };
 

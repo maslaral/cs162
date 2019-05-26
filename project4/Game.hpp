@@ -26,6 +26,7 @@ class Game {
     Winner_Queue team_one_lineup;
     Winner_Queue team_two_lineup;
     Loser_Stack losers;
+    Character* player;
     int team_one_score;
     int team_two_score;
   public:
@@ -35,7 +36,7 @@ class Game {
     ~Game();
 
     // gameplay functions
-    Character* create_player(character_type, std::string);
+    void create_player(character_type, std::string);
     void play_tournament();
     bool teams_alive();
     void play_matchup();

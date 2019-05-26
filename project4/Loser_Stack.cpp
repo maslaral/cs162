@@ -16,12 +16,14 @@ Loser_Stack::~Loser_Stack(){
   if (is_empty()){
     return;
   }
+
   Character* temp = top;
   while (temp != nullptr){
+    temp = top->get_next();
     delete top;
-    temp = temp->get_next();
     top = temp;
   }
+
   delete temp;
 }
 
@@ -34,15 +36,21 @@ bool Loser_Stack::is_empty() const {
   }
 }
 
-void Loser_Stack::add_loser(Character* loser){
+void Loser_Stack::add_loser(Character* &loser){
   // add player to top
   if (is_empty()){
     top = loser;
     top->set_next(nullptr);
   }
   else {
-    loser->set_next(top);
-    top = loser;
+    loser->set_next(nullptr);
+    if (top->get_next() == nullptr){
+      top->set_next(loser);
+    }
+    else {
+      loser->set_next(top->get_next());
+      top->set_next(loser);
+    }
   }
 }
 
@@ -53,10 +61,10 @@ void Loser_Stack::print_losers(){
 
   Character* temp = top;
 
-  while (temp != nullptr){
-    std::cout << temp->get_name() << " - " << temp->get_type() << std::endl;
-    temp = temp->get_next();
-  }
+  std::cout << temp->get_name() << " - " << temp->get_type() << std::endl;
 
-  delete temp;
+  while (temp->get_next() != nullptr){
+    temp = temp->get_next();
+    std::cout << temp->get_name() << " - " << temp->get_type() << std::endl;
+  }
 }

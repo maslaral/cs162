@@ -24,12 +24,12 @@ Winner_Queue::~Winner_Queue(){
     return;
   }
   else if (on_deck == last){
-    delete last;
+    delete on_deck;
   }
   else {
     Character* garbage = on_deck;
 
-    while (garbage->get_next() != last){
+    while (garbage != last){
       on_deck = on_deck->get_next();
       delete garbage;
       garbage = on_deck;
@@ -63,7 +63,7 @@ void Winner_Queue::add_winner(Character* victor){
   if (is_empty()){
     on_deck = victor;
     last = victor;
-    on_deck->set_next(nullptr);
+    last->set_next(nullptr);
   }
   else {
     last->set_next(victor);
@@ -77,19 +77,7 @@ void Winner_Queue::add_winner(Character* victor){
    next player to join the tournament.
 *************************************************************/
 Character* Winner_Queue::get_on_deck(){ 
-  if (is_empty()){
-    return nullptr;
-  }
-  else if (on_deck->get_next() == nullptr){
-    Character* temp = on_deck;
-    on_deck = nullptr;
-    return temp;
-  }
-  else {
-  Character* temp = on_deck;
-  on_deck = on_deck->get_next();
-  return temp;
-  }
+  return on_deck;
 }
 
 /*************************************************************
@@ -107,6 +95,7 @@ void Winner_Queue::remove_on_deck(){
   else {
     Character* temp = on_deck;
     on_deck = on_deck->get_next();
+    temp = nullptr;
     delete temp;
   }
 }
