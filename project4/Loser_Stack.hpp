@@ -12,6 +12,7 @@
 class Loser_Stack {
   private:
     Character* top;
+    Character* last;
   public:
     // constructor
     Loser_Stack();

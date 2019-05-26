@@ -154,10 +154,10 @@ bool Game::teams_alive(){
 void Game::play_matchup(){
   // get players on deck and remove
   Character* player_one = team_one_lineup.get_on_deck();
-  team_one_lineup.remove_on_deck();
+  // team_one_lineup.remove_on_deck();
 
   Character* player_two = team_two_lineup.get_on_deck();
-  team_two_lineup.remove_on_deck();
+  // team_two_lineup.remove_on_deck();
 
   // play until one player is no longer alive
   while (player_one->alive() && player_two->alive()){
@@ -173,9 +173,11 @@ void Game::play_matchup(){
     std::cout << "Player 1 " << player_one->get_type() << " wins!" << std::endl;
     std::cout << "---------------------------------------------" << std::endl;
 
-    team_one_lineup.add_winner(player_one);
+    team_one_lineup.move_to_back();
+    // team_one_lineup.add_winner(player_one);
     team_one_score += 2;
 
+    team_two_lineup.remove_on_deck();
     losers.add_loser(player_two);
     team_two_score -= 1;
   }
@@ -185,9 +187,11 @@ void Game::play_matchup(){
     std::cout << "Player 2 " << player_two->get_type() << " wins!" << std::endl; 
     std::cout << "---------------------------------------------" << std::endl;
 
-    team_two_lineup.add_winner(player_two);
+    team_two_lineup.move_to_back();
+    // team_two_lineup.add_winner(player_two);
     team_two_score += 2;
 
+    team_one_lineup.remove_on_deck();
     losers.add_loser(player_one);
     team_one_score -= 1;
   }

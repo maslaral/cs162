@@ -81,6 +81,17 @@ Character* Winner_Queue::get_on_deck(){
 }
 
 /*************************************************************
+** Description:
+*************************************************************/
+void Winner_Queue::move_to_back(){
+  Character* temp = on_deck;
+  on_deck = on_deck->get_next();
+  last->set_next(temp);
+  last = temp;
+  last->set_next(nullptr);
+}
+
+/*************************************************************
 ** Description: Function deletes the on deck player - this is
    called after the player enters the game.
 *************************************************************/
@@ -96,6 +107,5 @@ void Winner_Queue::remove_on_deck(){
     Character* temp = on_deck;
     on_deck = on_deck->get_next();
     temp = nullptr;
-    delete temp;
   }
 }
