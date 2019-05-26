@@ -45,8 +45,8 @@ void Game::add_team(int team){
   // prompt user for name of player
   std::cout << "What do you want to name player?" << std::endl;
   std::cout << "---------------------------------------------" << std::endl;
-  std::cin >> name;
-  std::cout << std::endl;
+  std::cin.ignore();
+  std::getline(std::cin, name);
 
   // prompt user for the type of player
   choose_type.outputMenu();

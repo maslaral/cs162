@@ -20,18 +20,6 @@ Loser_Stack::Loser_Stack(){
 ** Description:
 *************************************************************/
 Loser_Stack::~Loser_Stack(){
-  if (is_empty()){
-    return;
-  }
-
-  Character* temp = top;
-  while (temp != nullptr){
-    temp = top->get_next();
-    delete top;
-    top = temp;
-  }
-
-  delete temp;
 }
 
 /*************************************************************
@@ -92,11 +80,13 @@ void Loser_Stack::clear(){
   if (is_empty()){
     return;
   }
+  else {
+    Character* garbage = nullptr;
 
-  Character* temp = top;
-  while (temp != nullptr){
-    temp = top->get_next();
-    delete top;
-    top = temp;
+    while (top != nullptr){
+      garbage = top;
+      top = top->get_next();
+      delete garbage;
+    }
   }
 }
