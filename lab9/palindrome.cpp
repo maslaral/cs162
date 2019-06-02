@@ -10,19 +10,18 @@
 
 void palindrome(std::string user_input){
   std::stack<char> string_stack;
-  int length = user_input.length();
 
-  // storing user input to a stack
-  for (int i = 0; i < length; i++){
+  // store user input in stack
+  for (int i = 0; i < user_input.length(); i++){
     string_stack.push(user_input.at(i));
   }
 
   // print original user input
   std::cout << user_input;
 
-  // print out each value in reverse and pop the stack
-  for (int i = 0; i < length; i++){
-    std::cout << user_input.at((length-1) - i);
+  // print in reverse and pop
+  while (!string_stack.empty()){
+    std::cout << string_stack.top();
     string_stack.pop();
   }
   std::cout << std::endl;
