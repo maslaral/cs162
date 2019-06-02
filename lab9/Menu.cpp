@@ -1,7 +1,7 @@
 /*************************************************************
-** Program name: Lab 8
+** Program name: Lab 9
 ** Author: Alex Maslar
-** Date: May 21 2019
+** Date: June 2 2019
 ** Description: The menu class represents the user menu. It
    contains information about the menu that is presented to the
    user, including the prompt, the options presented, the

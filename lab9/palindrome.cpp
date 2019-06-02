@@ -12,6 +12,7 @@ void palindrome(){
  
   std::string user_input;
   
+  // print round information
   std::cout << "---------------------------------------------" << std::endl;
   std::cout << "Enter a word to reverse" << std::endl;      
   std::cout << "---------------------------------------------" << std::endl;
@@ -19,9 +20,10 @@ void palindrome(){
   std::cin >> user_input;
 
   std::stack<char> string_stack;
+  int word_length = user_input.length();
 
   // store user input in stack
-  for (int i = 0; i < user_input.length(); i++){
+  for (int i = 0; i < word_length; i++){
     string_stack.push(user_input.at(i));
   }
 

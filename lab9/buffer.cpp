@@ -16,6 +16,7 @@
 
 void buffer(){
 
+  // create menus
   Menu rounds("How many rounds?");
   rounds.outputMenu();
 
@@ -25,8 +26,8 @@ void buffer(){
   Menu sub_percent("What percentage needed to subtract?");
   sub_percent.outputMenu();
 
+  // initialize buffer and average length
   std::queue<int> buffer;
-
   double avg_length = 0;
 
   for (int i = 1; i <= rounds.getUserInput(); i++){
@@ -72,6 +73,7 @@ void buffer(){
       avg_length = len_numerator / i;
     }
 
+    // return the average length
     std::cout << "Average length: " << avg_length << std::endl;
     std::cout << std::endl;
   }
