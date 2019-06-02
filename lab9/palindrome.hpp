@@ -13,6 +13,6 @@
 #include <stack>
 #include <iostream>
 
-void palindrome(std::string);
+void palindrome();
 
 #endif

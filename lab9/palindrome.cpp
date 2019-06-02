@@ -8,7 +8,16 @@
 *************************************************************/
 #include "palindrome.hpp"
 
-void palindrome(std::string user_input){
+void palindrome(){
+ 
+  std::string user_input;
+  
+  std::cout << "---------------------------------------------" << std::endl;
+  std::cout << "Enter a word to reverse" << std::endl;      
+  std::cout << "---------------------------------------------" << std::endl;
+
+  std::cin >> user_input;
+
   std::stack<char> string_stack;
 
   // store user input in stack
