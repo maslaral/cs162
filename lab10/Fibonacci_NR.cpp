@@ -6,6 +6,9 @@
    sequence. Rather than recursion, this function uses a while
    with a counter that continues adding the last two values in the sequence until the counter reaches the number entered
    by the user.
+
+   Source code adapted from: codeproject.com/tips/109443/fibonacci-
+   recursive-and-non-recursive-c
 *************************************************************/
 #include "Fibonacci_NR.hpp"
 #include <iostream>
@@ -61,5 +64,5 @@ int Fibonacci_NR::Fibonacci(const int &n){
 *************************************************************/
 void Fibonacci_NR::PrintFibonacci(){
   const int result = Fibonacci(*n_);
-  std::cout << *n_ << "th Fibonacci Number: " << result << std::endl;
+  std::cout << *n_ << "th Fibonacci Number (non-recursive): " << result << std::endl;
 }
