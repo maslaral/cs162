@@ -22,6 +22,7 @@ int main(){
 
   // each turn add to the time
   while (time < 500){
+    time += office_survival.play_round();
     time += 30;
     std::cout << "---------------------------------------------" << std::endl;
     std::cout << "Time: " << time << " Status: Not Fired" << std::endl;

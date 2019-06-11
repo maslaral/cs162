@@ -2,20 +2,18 @@
 #define DESK_HPP
 
 #include "Office.hpp"
-#include "Email.hpp"
+#include "Inbox.hpp"
 
 #include <string>
 
 class Desk : public Office {
   private:
-    Email email1;
-    Email email2;
-    Email email3;
-    Email email4;
-    Email email5;
+    Inbox* inbox;
   public:
     Desk();
     ~Desk();
     int action();
+    Inbox* get_inbox();
 };
+
 #endif

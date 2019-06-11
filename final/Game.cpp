@@ -5,7 +5,6 @@
 *************************************************************/
 #include "Game.hpp"
 #include "Menu.hpp"
-#include "Email.hpp"
 #include "Player.hpp"
 
 #include <iostream>
@@ -16,15 +15,23 @@
 Game::Game(){
   time = 0;                     // time is set to 0 to start game
   player = new Player;          // create player object
-  desk = new Desk;              // create desk space
+  players_desk = new Desk;              // create desk space
+  jerrys_desk = new Desk;
+  break_room_1 = new Break_Room;
+  break_room_2 = new Break_Room;
 
-  player->set_location(desk);   // player initially starts at desk
+  player->set_location(players_desk);   // player initially starts at desk
 }
 
 /*************************************************************
 ** Description: Virtual destructor
 *************************************************************/
 Game::~Game(){
+  delete player;
+  delete players_desk;
+  delete jerrys_desk;
+  delete break_room_1;
+  delete break_room_2;
 }
 
 /*************************************************************
@@ -64,8 +71,11 @@ void Game::begin_game(){
 /*************************************************************
 ** Description: Coordinates playing a round in the game
 *************************************************************/
-void Game::play_round(){
+int Game::play_round(){
+  int time_taken = 0;
   create_prompt();
+
+  return time_taken;
 }
 
 /*************************************************************

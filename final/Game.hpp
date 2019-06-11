@@ -11,17 +11,21 @@
 #include "Office.hpp"
 #include "Player.hpp"
 #include "Desk.hpp"
+#include "Break_Room.hpp"
 
 class Game {
   private:
     int time;
     Player* player;
-    Desk* desk;
+    Desk* players_desk;
+    Desk* jerrys_desk;
+    Break_Room* break_room_1;
+    Break_Room* break_room_2;
   public:
     Game();
     ~Game();
     void begin_game();
-		void play_round();
+		int play_round();
 		void create_prompt();
 };
 
